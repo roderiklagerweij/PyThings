@@ -1,0 +1,8 @@
+LinearLayout HORIZONTAL
+    View 50 50 255 0 0
+    View 100 100 0 0 255
+    View 75 250 0 255 0
+    LinearLayout VERTICAL
+        View 30 30 255 255 0
+    end
+end
