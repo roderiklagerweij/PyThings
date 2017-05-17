@@ -14,8 +14,9 @@ class View:
     def measure(self):
         pass
 
-    def layout(self):
-        pass
+    def layout(self, offset_x, offset_y):
+        self.offset_x = offset_x
+        self.offset_y = offset_y
 
     def draw(self, screen):
         pygame.draw.rect(screen, self.color, (self.offset_x, self.offset_y, self.width, self.height), 0)

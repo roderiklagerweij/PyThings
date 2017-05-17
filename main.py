@@ -35,8 +35,9 @@ def recurse_add(lines, parent):
             v = View(width, height, r, g, b)
             parent.add_child(v)
         elif line.strip().startswith('LinearLayout'):
+            # print (line, parent)
             args = line.strip().split(' ')
-            ll = LinearLayout(args[1])
+            ll = LinearLayout(args[1], args[2])
             parent.add_child(ll)
             recurse_add(lines[idx+1:], ll)
         elif line.strip().startswith('end'):
@@ -62,10 +63,16 @@ while not game_over:
         view.measure()
 
     for view in view_hierarchy:
-        view.layout()
+        view.layout(0, 0)
 
     for view in view_hierarchy:
         view.draw(screen)
+
+    print ('\n\n')
+
+    # print (view_hierarchy)
+    # print (view_hierarchy[0].childs[0].childs)
+    # break
 
     for event in pygame.event.get():
         if event.type == pygame.locals.QUIT:

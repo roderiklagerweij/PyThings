@@ -1,8 +1,24 @@
-LinearLayout HORIZONTAL
-    View 50 50 255 0 0
-    View 100 100 0 0 255
-    View 75 250 0 255 0
-    LinearLayout VERTICAL
-        View 30 30 255 255 0
+LinearLayout VERTICAL 1
+    LinearLayout HORIZONTAL 2
+        View 50 50 255 0 0
+        View 100 100 0 0 255
+        View 75 250 0 255 0
+        LinearLayout VERTICAL 3
+            View 30 30 255 0 0
+            View 30 30 0 255 0
+            View 30 30 0 0 255
+            View 30 30 255 0 0
+            View 30 30 0 255 0
+            View 30 30 0 0 255
+
+            LinearLayout HORIZONTAL 4
+                View 100 100 255 255 0
+                View 100 100 0 255 255
+            end
+        end
+    LinearLayout HORIZONTAL 5
+        View 50 50 255 255 0
+        View 50 50 0 255 255
+        View 50 50 255 0 255
     end
 end
