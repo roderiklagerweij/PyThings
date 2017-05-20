@@ -35,11 +35,12 @@ def recurse_add(lines, parent):
 
         if line.strip().startswith('View'):
             args = arg_parser.parse(line)
-            width = int(args['w'])
-            height = int(args['h'])
+            width = args['w']
+            height = args['h']
             r = int(args['r'])
             g = int(args['g'])
             b = int(args['b'])
+
             gravity = None
             if 'gravity' in args:
                 gravity = args['gravity']
@@ -75,6 +76,9 @@ while not game_over:
 
     for view in view_hierarchy:
         view.measure()
+
+    for view in view_hierarchy:
+        view.post_measure(640, 480)
 
     for view in view_hierarchy:
         view.layout(0, 0, 640, 480)

@@ -40,6 +40,10 @@ class LinearLayout:
                 if self.width < child.width:
                     self.width = child.width
 
+    def post_measure(self, parent_width, parent_height):
+        for child in self.childs:
+            child.post_measure(self.width, self.height)
+
     def layout(self, offset_x, offset_y, parent_width, parent_height):
         if self.gravity == 'top':
             offset_y -= (parent_height - self.height)

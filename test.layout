@@ -2,7 +2,7 @@ LinearLayout: orientation=VERTICAL
     LinearLayout: orientation=HORIZONTAL
 
         View: w=50, h=50, r=255, g=0, b=0, gravity=bottom
-        View: w=100, h=100, r=0, g=0, b=255
+        View: w=100, h=fill, r=0, g=0, b=255
         View: w=75, h=250, r=0, g=255, b=0
 
         LinearLayout: orientation=VERTICAL
