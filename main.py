@@ -6,11 +6,13 @@ from linearlayout import LinearLayout
 from view import View
 from screen import Screen
 import time
+from argument_parser import ArgumentParser
 
 screen = pygame.display.set_mode((640, 480))
 game_over = False
 
 view_hierarchy = []
+arg_parser = ArgumentParser()
 
 def recurse_add(lines, parent):
     leading_spaces = -1
@@ -26,18 +28,17 @@ def recurse_add(lines, parent):
             continue
 
         if line.strip().startswith('View'):
-            args = line.strip().split(' ')
-            width = int(args[1])
-            height = int(args[2])
-            r = int(args[3])
-            g = int(args[4])
-            b = int(args[5])
+            args = arg_parser.parse(line)
+            width = int(args['w'])
+            height = int(args['h'])
+            r = int(args['r'])
+            g = int(args['g'])
+            b = int(args['b'])
             v = View(width, height, r, g, b)
             parent.add_child(v)
         elif line.strip().startswith('LinearLayout'):
-            # print (line, parent)
-            args = line.strip().split(' ')
-            ll = LinearLayout(args[1], args[2])
+            args = arg_parser.parse(line)
+            ll = LinearLayout(args['orientation'])
             parent.add_child(ll)
             recurse_add(lines[idx+1:], ll)
         elif line.strip().startswith('end'):
@@ -67,12 +68,6 @@ while not game_over:
 
     for view in view_hierarchy:
         view.draw(screen)
-
-    print ('\n\n')
-
-    # print (view_hierarchy)
-    # print (view_hierarchy[0].childs[0].childs)
-    # break
 
     for event in pygame.event.get():
         if event.type == pygame.locals.QUIT:

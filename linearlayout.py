@@ -6,7 +6,7 @@ class LinearLayout:
     HORIZONTAL = 1
     VERTICAL = 2
 
-    def __init__(self, layout_type, layout_id):
+    def __init__(self, layout_type):
         if layout_type == "HORIZONTAL":
             self.layout_type = LinearLayout.HORIZONTAL
         elif layout_type == "VERTICAL":
@@ -14,7 +14,6 @@ class LinearLayout:
         self.childs = []
         self.offset_x = 0
         self.offset_y = 0
-        self.layout_id = layout_id
 
     def draw(self):
         pass
@@ -39,7 +38,7 @@ class LinearLayout:
                 self.height += child.height
                 if self.width < child.width:
                     self.width = child.width
-        print (self.layout_id, self.width, self.height)
+        # print (self.layout_id, self.width, self.height)
 
     def layout(self, offset_x, offset_y):
         for child in self.childs:
@@ -48,7 +47,6 @@ class LinearLayout:
                 offset_x += child.width
             elif self.layout_type == LinearLayout.VERTICAL:
                 offset_y += child.height
-
 
     def add_child(self, child):
         self.childs.append(child)
