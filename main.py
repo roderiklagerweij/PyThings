@@ -14,6 +14,12 @@ game_over = False
 view_hierarchy = []
 arg_parser = ArgumentParser()
 
+# * all linearlayouts are wrap content now
+# * view must take a dedicated space
+# gravity?
+# layout_weight?
+# constraints
+
 def recurse_add(lines, parent):
     leading_spaces = -1
     for idx, line in enumerate(lines):
@@ -34,11 +40,18 @@ def recurse_add(lines, parent):
             r = int(args['r'])
             g = int(args['g'])
             b = int(args['b'])
-            v = View(width, height, r, g, b)
+            gravity = None
+            if 'gravity' in args:
+                gravity = args['gravity']
+            v = View(width, height, r, g, b, gravity)
             parent.add_child(v)
         elif line.strip().startswith('LinearLayout'):
             args = arg_parser.parse(line)
-            ll = LinearLayout(args['orientation'])
+            gravity = None
+            if 'gravity' in args:
+                gravity = args['gravity']
+            ll = LinearLayout(args['orientation'], gravity)
+
             parent.add_child(ll)
             recurse_add(lines[idx+1:], ll)
         elif line.strip().startswith('end'):
@@ -64,7 +77,7 @@ while not game_over:
         view.measure()
 
     for view in view_hierarchy:
-        view.layout(0, 0)
+        view.layout(0, 0, 640, 480)
 
     for view in view_hierarchy:
         view.draw(screen)

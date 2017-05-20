@@ -10,9 +10,9 @@ class Screen:
         for child in self.childs:
             child.measure()
 
-    def layout(self, offset_x, offset_y):
+    def layout(self, offset_x, offset_y, parent_width, parent_height):
         for child in self.childs:
-            child.layout(offset_x, offset_y)
+            child.layout(offset_x, offset_y, parent_width, parent_height)
 
     def add_child(self, child):
         self.childs.append(child)
