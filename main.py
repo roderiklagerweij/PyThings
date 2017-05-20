@@ -4,6 +4,7 @@ import pygame.locals
 from pygame import Color
 from linearlayout import LinearLayout
 from view import View
+from triangle import Triangle
 from screen import Screen
 import time
 from argument_parser import ArgumentParser
@@ -45,6 +46,19 @@ def recurse_add(lines, parent):
             if 'gravity' in args:
                 gravity = args['gravity']
             v = View(width, height, r, g, b, gravity)
+            parent.add_child(v)
+        if line.strip().startswith('Triangle'):
+            args = arg_parser.parse(line)
+            width = args['w']
+            height = args['h']
+            r = int(args['r'])
+            g = int(args['g'])
+            b = int(args['b'])
+
+            gravity = None
+            if 'gravity' in args:
+                gravity = args['gravity']
+            v = Triangle(width, height, r, g, b, gravity)
             parent.add_child(v)
         elif line.strip().startswith('LinearLayout'):
             args = arg_parser.parse(line)
