@@ -1,5 +1,6 @@
 __author__ = 'Roderik'
-
+import pygame
+from pygame import Color
 
 class LinearLayout:
 
@@ -8,7 +9,8 @@ class LinearLayout:
 
     def __init__(self, layout_type,
                  gravity=None,
-                 padding=0):
+                 padding=0,
+                 color=None):
 
         if layout_type == "HORIZONTAL":
             self.layout_type = LinearLayout.HORIZONTAL
@@ -19,6 +21,7 @@ class LinearLayout:
         self.offset_y = 0
         self.gravity = gravity
         self.padding = padding
+        self.color = color
 
     def draw(self):
         pass
@@ -49,6 +52,9 @@ class LinearLayout:
             child.post_measure(self.width, self.height)
 
     def layout(self, offset_x, offset_y, parent_width, parent_height):
+        self.offset_x = offset_x
+        self.offset_y = offset_y
+
         offset_x += self.padding
         offset_y += self.padding
 
@@ -68,5 +74,7 @@ class LinearLayout:
         self.childs.append(child)
 
     def draw(self, screen):
+        if self.color:
+            pygame.draw.rect(screen, self.color, (self.offset_x, self.offset_y, self.width, self.height), 0)
         for child in self.childs:
             child.draw(screen)
