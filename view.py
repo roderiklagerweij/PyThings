@@ -4,7 +4,7 @@ from pygame import Color
 
 class View:
 
-    def __init__(self, width, height, r, g, b, gravity):
+    def __init__(self, width, height, r, g, b, gravity, rotation):
         self.offset_x = 0
         self.offset_y = 0
         self.fill_width = False
@@ -24,6 +24,7 @@ class View:
 
         self.color = Color(r, g, b)
         self.gravity = gravity
+        self.rotation = rotation
 
     def measure(self):
         # not need to measure
@@ -40,9 +41,11 @@ class View:
         self.offset_y = offset_y
 
         if self.gravity == 'bottom':
-            self.offset_y = parent_height-self.height
+            self.offset_y = self.offset_y + (parent_height-self.height)
         if self.gravity == 'right':
-            self.offset_x = parent_width-self.width
+            self.offset_x = self.offset_x + (parent_width-self.width)
+        if self.gravity == 'center_vertical':
+            self.offset_y = self.offset_y + ((parent_height/2)-(self.height/2))
 
     def draw(self, screen):
         pygame.draw.rect(screen, self.color, (self.offset_x, self.offset_y, self.width, self.height), 0)

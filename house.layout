@@ -1,0 +1,7 @@
+LinearLayout: orientation=VERTICAL
+    Triangle: w=fill, h=100, r=132, g=31, b=39, rotation=180
+
+    LinearLayout: orientation=HORIZONTAL, r=132, g=31, b=39, padding=25
+        View: w=25, h=25, r=255, g=255, b=255, gravity=center_vertical
+        View: w=10, h=0, r=0, g=0, b=0
+        View: w=50, h=100, r=255, g=255, b=255

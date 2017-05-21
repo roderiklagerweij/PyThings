@@ -41,11 +41,14 @@ def recurse_add(lines, parent):
             r = int(args['r'])
             g = int(args['g'])
             b = int(args['b'])
+            rotation = 0
+            if 'rotation' in args:
+                rotation = int(args['rotation'])
 
             gravity = None
             if 'gravity' in args:
                 gravity = args['gravity']
-            v = View(width, height, r, g, b, gravity)
+            v = View(width, height, r, g, b, gravity, rotation)
             parent.add_child(v)
         if line.strip().startswith('Triangle'):
             args = arg_parser.parse(line)
@@ -54,18 +57,24 @@ def recurse_add(lines, parent):
             r = int(args['r'])
             g = int(args['g'])
             b = int(args['b'])
+            rotation = 0
+            if 'rotation' in args:
+                rotation = int(args['rotation'])
 
             gravity = None
             if 'gravity' in args:
                 gravity = args['gravity']
-            v = Triangle(width, height, r, g, b, gravity)
+            v = Triangle(width, height, r, g, b, gravity, rotation)
             parent.add_child(v)
         elif line.strip().startswith('LinearLayout'):
             args = arg_parser.parse(line)
             gravity = None
             if 'gravity' in args:
                 gravity = args['gravity']
-            ll = LinearLayout(args['orientation'], gravity)
+            padding = 0
+            if 'padding' in args:
+                padding = int(args['padding'])
+            ll = LinearLayout(args['orientation'], gravity, padding)
 
             parent.add_child(ll)
             recurse_add(lines[idx+1:], ll)
@@ -76,7 +85,7 @@ def recurse_add(lines, parent):
 while not game_over:
     screen.fill((0, 0, 0))
 
-    f = open('test.layout', 'r')
+    f = open('house.layout', 'r')
     layout = f.read()
     f.close()
 

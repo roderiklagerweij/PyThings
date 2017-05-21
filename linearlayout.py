@@ -6,7 +6,7 @@ class LinearLayout:
     HORIZONTAL = 1
     VERTICAL = 2
 
-    def __init__(self, layout_type, gravity):
+    def __init__(self, layout_type, gravity, padding):
         if layout_type == "HORIZONTAL":
             self.layout_type = LinearLayout.HORIZONTAL
         elif layout_type == "VERTICAL":
@@ -15,6 +15,7 @@ class LinearLayout:
         self.offset_x = 0
         self.offset_y = 0
         self.gravity = gravity
+        self.padding = padding
 
     def draw(self):
         pass
@@ -26,8 +27,8 @@ class LinearLayout:
         pass
 
     def measure(self):
-        self.width = 0
-        self.height = 0
+        self.width = 2*self.padding
+        self.height = 2*self.padding
 
         for child in self.childs:
             child.measure()
@@ -45,10 +46,13 @@ class LinearLayout:
             child.post_measure(self.width, self.height)
 
     def layout(self, offset_x, offset_y, parent_width, parent_height):
+        offset_x += self.padding
+        offset_y += self.padding
+
         if self.gravity == 'top':
             offset_y -= (parent_height - self.height)
         elif self.gravity == 'right':
-            offset_x = parent_width - self.width
+            offset_x -= (parent_width - self.width)
 
         for child in self.childs:
             child.layout(offset_x, offset_y, self.width, self.height)
