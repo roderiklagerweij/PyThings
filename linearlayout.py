@@ -6,7 +6,10 @@ class LinearLayout:
     HORIZONTAL = 1
     VERTICAL = 2
 
-    def __init__(self, layout_type, gravity, padding):
+    def __init__(self, layout_type,
+                 gravity=None,
+                 padding=None):
+
         if layout_type == "HORIZONTAL":
             self.layout_type = LinearLayout.HORIZONTAL
         elif layout_type == "VERTICAL":
@@ -15,7 +18,10 @@ class LinearLayout:
         self.offset_x = 0
         self.offset_y = 0
         self.gravity = gravity
-        self.padding = padding
+        if padding is None:
+            self.padding = 0
+        else:
+            self.padding = padding
 
     def draw(self):
         pass

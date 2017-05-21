@@ -13,15 +13,14 @@ from triangle import Triangle
 
 def get_instance():
     return [
-        LinearLayout('VERTICAL', None, 0),
+        LinearLayout('VERTICAL'),
         [
             Triangle('fill', 100, 132, 31, 39, None, 180),
-            LinearLayout('HORIZONTAL', None, 25),
+            LinearLayout('HORIZONTAL', padding=25),
             [
                 View(25, 25, 255, 255, 255, 'center_vertical', 0),
                 View(10, 0, 0, 0, 0, None, 0),
                 View(50, 100, 255, 255, 255, None, 0)
             ]
-
         ]
     ]
