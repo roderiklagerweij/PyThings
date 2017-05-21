@@ -8,6 +8,7 @@ from triangle import Triangle
 from screen import Screen
 import time
 from argument_parser import ArgumentParser
+import house
 
 screen = pygame.display.set_mode((640, 480))
 game_over = False
@@ -81,6 +82,12 @@ def recurse_add(lines, parent):
         elif line.strip().startswith('end'):
             return
 
+def recurse_add_prog(layout, parent):
+    for item in layout:
+        if type(item) is list:
+            recurse_add_prog(item, parent.childs[-1])
+        else:
+            parent.add_child(item)
 
 while not game_over:
     screen.fill((0, 0, 0))
@@ -95,7 +102,8 @@ while not game_over:
     view_hierarchy = []
     view_hierarchy.append(top_layout)
 
-    recurse_add(lines, top_layout)
+    # recurse_add(lines, top_layout)
+    recurse_add_prog(house.get_instance(), top_layout)
 
     for view in view_hierarchy:
         view.measure()
