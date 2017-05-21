@@ -4,7 +4,7 @@ from pygame import Color
 
 class View:
 
-    def __init__(self, width, height, r, g, b, gravity, rotation):
+    def __init__(self, width, height, color=None, gravity=None, rotation=0):
         self.offset_x = 0
         self.offset_y = 0
         self.fill_width = False
@@ -22,7 +22,10 @@ class View:
             if height == 'fill':
                 self.fill_height = True
 
-        self.color = Color(r, g, b)
+        if color is None:
+            self.color = Color(0, 0, 0)
+        else:
+            self.color = color
         self.gravity = gravity
         self.rotation = rotation
 
