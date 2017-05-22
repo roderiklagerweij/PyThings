@@ -33,8 +33,8 @@ class LinearLayout:
         pass
 
     def measure(self):
-        self.width = 2*self.padding
-        self.height = 2*self.padding
+        self.width = 0
+        self.height = 0
 
         for child in self.childs:
             child.measure()
@@ -46,6 +46,9 @@ class LinearLayout:
                 self.height += child.height
                 if self.width < child.width:
                     self.width = child.width
+
+        self.width += 2*self.padding
+        self.height += 2*self.padding
 
     def post_measure(self, parent_width, parent_height):
         for child in self.childs:
@@ -76,5 +79,6 @@ class LinearLayout:
     def draw(self, screen):
         if self.color:
             pygame.draw.rect(screen, self.color, (self.offset_x, self.offset_y, self.width, self.height), 0)
+
         for child in self.childs:
             child.draw(screen)
