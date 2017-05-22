@@ -1,14 +1,14 @@
 __author__ = 'Roderik'
 import pygame
 import pygame.locals
-from pygame import Color
+
 from linearlayout import LinearLayout
 from view import View
 from triangle import Triangle
 from screen import Screen
-import time
 from argument_parser import ArgumentParser
-import house
+from dutch_houses import house
+
 
 screen = pygame.display.set_mode((640, 480))
 game_over = False
@@ -91,12 +91,6 @@ def recurse_add_prog(layout, parent):
 
 while not game_over:
     screen.fill((0, 0, 0))
-
-    f = open('house.layout', 'r')
-    layout = f.read()
-    f.close()
-
-    lines = layout.strip().split('\n')
 
     top_layout = Screen()
     view_hierarchy = []
