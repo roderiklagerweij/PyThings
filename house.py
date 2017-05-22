@@ -10,7 +10,7 @@ def get_instance():
         LinearLayout('VERTICAL'),
         [
             Triangle('fill', 100, color=(132, 31, 39), rotation=180),
-            LinearLayout('HORIZONTAL', padding=25, color=(255, 0, 0)),
+            LinearLayout('HORIZONTAL', padding_left=25, padding_right=25, padding_top=25, color=(255, 0, 0)),
             [
                 View(25, 25, color=Color(255, 255, 255), gravity='center_vertical'),
                 View(10, 0),
