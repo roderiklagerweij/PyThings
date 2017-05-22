@@ -2,9 +2,6 @@ __author__ = 'Roderik'
 import pygame
 import pygame.locals
 
-from linearlayout import LinearLayout
-from view import View
-from triangle import Triangle
 from screen import Screen
 from argument_parser import ArgumentParser
 from dutch_houses import house
