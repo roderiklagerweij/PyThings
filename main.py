@@ -22,66 +22,6 @@ arg_parser = ArgumentParser()
 # layout_weight?
 # constraints
 
-def recurse_add(lines, parent):
-    leading_spaces = -1
-    for idx, line in enumerate(lines):
-
-        if line.strip() == '':
-            continue
-
-        if leading_spaces == -1:
-            leading_spaces = len(line) - len(line.lstrip())
-
-        if not len(line) - len(line.lstrip()) == leading_spaces:
-            continue
-
-        if line.strip().startswith('View'):
-            args = arg_parser.parse(line)
-            width = args['w']
-            height = args['h']
-            r = int(args['r'])
-            g = int(args['g'])
-            b = int(args['b'])
-            rotation = 0
-            if 'rotation' in args:
-                rotation = int(args['rotation'])
-
-            gravity = None
-            if 'gravity' in args:
-                gravity = args['gravity']
-            v = View(width, height, r, g, b, gravity, rotation)
-            parent.add_child(v)
-        if line.strip().startswith('Triangle'):
-            args = arg_parser.parse(line)
-            width = args['w']
-            height = args['h']
-            r = int(args['r'])
-            g = int(args['g'])
-            b = int(args['b'])
-            rotation = 0
-            if 'rotation' in args:
-                rotation = int(args['rotation'])
-
-            gravity = None
-            if 'gravity' in args:
-                gravity = args['gravity']
-            v = Triangle(width, height, r, g, b, gravity, rotation)
-            parent.add_child(v)
-        elif line.strip().startswith('LinearLayout'):
-            args = arg_parser.parse(line)
-            gravity = None
-            if 'gravity' in args:
-                gravity = args['gravity']
-            padding = 0
-            if 'padding' in args:
-                padding = int(args['padding'])
-            ll = LinearLayout(args['orientation'], gravity, padding)
-
-            parent.add_child(ll)
-            recurse_add(lines[idx+1:], ll)
-        elif line.strip().startswith('end'):
-            return
-
 def recurse_add_prog(layout, parent):
     for item in layout:
         if type(item) is list:
@@ -96,7 +36,6 @@ while not game_over:
     view_hierarchy = []
     view_hierarchy.append(top_layout)
 
-    # recurse_add(lines, top_layout)
     recurse_add_prog(house.get_instance(), top_layout)
 
     for view in view_hierarchy:
