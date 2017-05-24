@@ -1,6 +1,7 @@
 __author__ = 'Roderik'
 import pygame
 from pygame import Color
+import colorsys
 
 class LinearLayout:
 
@@ -15,7 +16,8 @@ class LinearLayout:
                  padding_top=None,
                  padding_bottom=None,
                  color=None,
-                 repeat_include=None):
+                 repeat_include=None,
+                 intensity=1):
 
         if layout_type == "HORIZONTAL":
             self.layout_type = LinearLayout.HORIZONTAL
@@ -38,7 +40,12 @@ class LinearLayout:
         if padding_bottom:
             self.padding_bottom = padding_bottom
 
-        self.color = color
+        if color:
+            hsv = colorsys.rgb_to_hsv(color[0], color[1], color[2])
+            self.color = colorsys.hsv_to_rgb(hsv[0], hsv[1], hsv[2]*intensity)
+        else:
+            self.color = None
+
         if repeat_include:
             for i in range(repeat_include[1]):
                 self.add_child(repeat_include[0].get_instance())

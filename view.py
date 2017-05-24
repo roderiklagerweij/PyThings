@@ -1,6 +1,7 @@
 __author__ = 'Roderik'
 import pygame
 from pygame import Color
+import colorsys
 
 class View:
 
@@ -8,7 +9,8 @@ class View:
                  color=None,
                  gravity=None,
                  rotation=0,
-                 padding=0):
+                 padding=0,
+                 intensity=1):
         self.offset_x = 0
         self.offset_y = 0
         self.fill_width = False
@@ -26,7 +28,9 @@ class View:
             if height == 'fill':
                 self.fill_height = True
 
-        self.color = color
+        hsv = colorsys.rgb_to_hsv(color[0], color[1], color[2])
+        self.color = colorsys.hsv_to_rgb(hsv[0], hsv[1], hsv[2]*intensity)
+
         self.gravity = gravity
         self.rotation = rotation
         self.padding = padding
