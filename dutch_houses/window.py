@@ -5,4 +5,4 @@ from pygame import Color
 
 
 def get_instance():
-    return View(25, 25, color=Color(255, 255, 255), gravity='center_vertical'),
+    return View(25, 25, color=Color(255, 255, 255), gravity='center_vertical')

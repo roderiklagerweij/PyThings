@@ -77,6 +77,10 @@ class LinearLayout:
             offset_y -= (parent_height - self.height)
         elif self.gravity == 'right':
             offset_x -= (parent_width - self.width)
+        elif self.gravity == 'center':
+            offset_x = (parent_width/2) - self.width / 2
+            offset_y = (parent_height/2) - self.height / 2
+
 
         for child in self.childs:
             child.layout(offset_x, offset_y, self.width-(self.padding_left+self.padding_right), self.height-(self.padding_top+self.padding_bottom))
