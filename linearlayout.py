@@ -10,11 +10,12 @@ class LinearLayout:
     def __init__(self, layout_type,
                  gravity=None,
                  padding=0,
-                 padding_left=0,
-                 padding_right=0,
-                 padding_top=0,
-                 padding_bottom=0,
-                 color=None):
+                 padding_left=None,
+                 padding_right=None,
+                 padding_top=None,
+                 padding_bottom=None,
+                 color=None,
+                 repeat_include=None):
 
         if layout_type == "HORIZONTAL":
             self.layout_type = LinearLayout.HORIZONTAL
@@ -28,12 +29,19 @@ class LinearLayout:
         self.padding_right = padding
         self.padding_top = padding
         self.padding_bottom = padding
-        self.padding_left = padding_left
-        self.padding_right = padding_right
-        self.padding_top = padding_top
-        self.padding_bottom = padding_bottom
+        if padding_left:
+            self.padding_left = padding_left
+        if padding_right:
+            self.padding_right = padding_right
+        if padding_top:
+            self.padding_top = padding_top
+        if padding_bottom:
+            self.padding_bottom = padding_bottom
 
         self.color = color
+        if repeat_include:
+            for i in range(repeat_include[1]):
+                self.add_child(repeat_include[0].get_instance())
 
     def draw(self):
         pass
@@ -70,24 +78,23 @@ class LinearLayout:
         self.offset_x = offset_x
         self.offset_y = offset_y
 
-        offset_x += self.padding_left
-        offset_y += self.padding_top
-
         if self.gravity == 'top':
-            offset_y -= (parent_height - self.height)
+            self.offset_y -= (parent_height - self.height)
         elif self.gravity == 'right':
-            offset_x -= (parent_width - self.width)
+            self.offset_x -= (parent_width - self.width)
         elif self.gravity == 'center':
-            offset_x = (parent_width/2) - self.width / 2
-            offset_y = (parent_height/2) - self.height / 2
+            self.offset_x = (parent_width/2) - self.width / 2
+            self.offset_y = (parent_height/2) - self.height / 2
 
+        draw_x = self.offset_x + self.padding_left
+        draw_y = self.offset_y + self.padding_top
 
         for child in self.childs:
-            child.layout(offset_x, offset_y, self.width-(self.padding_left+self.padding_right), self.height-(self.padding_top+self.padding_bottom))
+            child.layout(draw_x, draw_y, self.width-(self.padding_left+self.padding_right), self.height-(self.padding_top+self.padding_bottom))
             if self.layout_type == LinearLayout.HORIZONTAL:
-                offset_x += child.width
+                draw_x += child.width
             elif self.layout_type == LinearLayout.VERTICAL:
-                offset_y += child.height
+                draw_y += child.height
 
     def add_child(self, child):
         self.childs.append(child)

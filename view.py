@@ -7,7 +7,8 @@ class View:
     def __init__(self, width, height,
                  color=None,
                  gravity=None,
-                 rotation=0):
+                 rotation=0,
+                 padding=0):
         self.offset_x = 0
         self.offset_y = 0
         self.fill_width = False
@@ -28,6 +29,7 @@ class View:
         self.color = color
         self.gravity = gravity
         self.rotation = rotation
+        self.padding = padding
 
     def measure(self):
         # not need to measure
@@ -52,4 +54,8 @@ class View:
 
     def draw(self, screen):
         if self.color:
-            pygame.draw.rect(screen, self.color, (self.offset_x, self.offset_y, self.width, self.height), 0)
+            pygame.draw.rect(screen, self.color, (
+                self.offset_x+self.padding,
+                self.offset_y+self.padding,
+                self.width - (2*self.padding),
+                self.height - (2*self.padding)), 0)

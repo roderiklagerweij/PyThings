@@ -5,5 +5,5 @@ import random
 
 class SkylineParams:
 
-    width = (random.random()*100) + 50
-    height = (random.random()*300) + 100
+    horizontal_windows = round(random.random()*5) + 3
+    floor_count = round(random.random()*10) + 4
