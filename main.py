@@ -5,7 +5,7 @@ import pygame.locals
 from screen import Screen
 from argument_parser import ArgumentParser
 from dutch_houses import house
-from skyline import building
+from skyline import tower
 
 screen = pygame.display.set_mode((640, 480))
 game_over = False
@@ -35,7 +35,7 @@ while not game_over:
     view_hierarchy.append(top_layout)
 
     # recurse_add_prog(house.get_instance(), top_layout)
-    recurse_add_prog(building.get_instance(), top_layout)
+    recurse_add_prog(tower.get_instance(), top_layout)
 
     for view in view_hierarchy:
         view.measure()

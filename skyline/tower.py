@@ -3,7 +3,7 @@ __author__ = 'Roderik'
 from linearlayout import LinearLayout
 from triangle import Triangle
 from skyline.params import SkylineParams
-from skyline import floor
+from skyline import tower_floor
 from skyline import tower_middlepart
 
 
@@ -28,7 +28,7 @@ def get_instance():
                         layout_type="VERTICAL",
                         padding=3,
                         childs=[
-                            (floor, SkylineParams.floor_count)
+                            (tower_floor, SkylineParams.floor_count)
                         ])
                 ])
 
