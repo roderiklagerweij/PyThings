@@ -15,6 +15,8 @@ class LinearLayout:
                  padding_right=None,
                  padding_top=None,
                  padding_bottom=None,
+                 fill_width=False,
+                 fill_height=False,
                  color=None,
                  repeat_include=None,
                  intensity=1):
@@ -39,6 +41,9 @@ class LinearLayout:
             self.padding_top = padding_top
         if padding_bottom:
             self.padding_bottom = padding_bottom
+
+        self.fill_width = fill_width
+        self.fill_height = fill_height
 
         if color:
             hsv = colorsys.rgb_to_hsv(color[0], color[1], color[2])
@@ -78,6 +83,11 @@ class LinearLayout:
         self.height += self.padding_top + self.padding_bottom
 
     def post_measure(self, parent_width, parent_height):
+        if self.fill_width:
+            self.width = parent_width
+        if self.fill_height:
+            self.height = parent_height
+
         for child in self.childs:
             child.post_measure(self.width, self.height)
 

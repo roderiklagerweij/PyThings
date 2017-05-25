@@ -55,6 +55,11 @@ class View:
             self.offset_x = self.offset_x + (parent_width-self.width)
         if self.gravity == 'center_vertical':
             self.offset_y = self.offset_y + ((parent_height/2)-(self.height/2))
+        if self.gravity == 'center':
+            self.offset_x = self.offset_x + ((parent_width/2)-(self.width/2))
+            self.offset_y = self.offset_y + ((parent_height/2)-(self.height/2))
+        if self.gravity == 'center_horizontal':
+            self.offset_x = self.offset_x + ((parent_width/2)-(self.width/2))
 
     def draw(self, screen):
         if self.color:

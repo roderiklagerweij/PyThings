@@ -4,6 +4,7 @@ from linearlayout import LinearLayout
 from triangle import Triangle
 from skyline.params import SkylineParams
 from skyline import floor
+from skyline import tower_middlepart
 
 
 def get_instance():
@@ -15,6 +16,8 @@ def get_instance():
                      color=SkylineParams.wall_color,
                      rotation=180,
                      intensity=SkylineParams.intensity),
+
+            tower_middlepart.get_instance(),
 
             LinearLayout("VERTICAL",
                          color=(0, 0, 128),
