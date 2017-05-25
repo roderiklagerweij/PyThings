@@ -10,7 +10,7 @@ class LinearLayout:
     VERTICAL = 2
 
     def __init__(self,
-                 layout_type,
+                 layout_type=None,
                  gravity=None,
                  padding=0,
                  padding_left=None,

@@ -7,11 +7,11 @@ from linearlayout import LinearLayout
 from skyline.params import SkylineParams
 
 def get_instance():
-    selection = random.randint(0, 1)
+    selection = random.randint(0, 2)
 
     if selection == 0:
         return LinearLayout(
-            "HORIZONTAL",
+            layout_type="HORIZONTAL",
             fill_width=True,
             color=SkylineParams.wall_color,
             intensity=SkylineParams.intensity,
@@ -21,11 +21,23 @@ def get_instance():
             ])
     elif selection == 1:
         return LinearLayout(
-            "HORIZONTAL",
             fill_width=True,
             height=5,
             color=(255, 255, 0),
             margin=5
+        )
+    elif selection == 2:
+        return LinearLayout(
+            layout_type="HORIZONTAL",
+            childs=[
+
+                LinearLayout(width=2, height=10, color=(255, 255, 0), margin=2),
+                LinearLayout(width=2, height=10, color=(255, 255, 0), margin=2),
+                LinearLayout(width=2, height=10, color=(255, 255, 0), margin=2),
+                LinearLayout(width=2, height=10, color=(255, 255, 0), margin=2),
+                LinearLayout(width=2, height=10, color=(255, 255, 0), margin=2),
+                LinearLayout(width=2, height=10, color=(255, 255, 0), margin=2)
+            ]
         )
 
 

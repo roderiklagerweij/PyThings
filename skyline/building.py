@@ -12,7 +12,6 @@ def get_instance():
         LinearLayout("VERTICAL", gravity="center", childs=[
 
             Triangle(
-                "HORIZONTAL",
                 fill_width=True,
                 height=50,
                 color=SkylineParams.wall_color,
@@ -20,13 +19,13 @@ def get_instance():
                 intensity=SkylineParams.intensity),
 
             LinearLayout(
-                "VERTICAL",
+                layout_type="VERTICAL",
                 color=SkylineParams.wall_color,
                 intensity=SkylineParams.intensity,
                 childs=[
                     tower_middlepart.get_instance(),
                     LinearLayout(
-                        "VERTICAL",
+                        layout_type="VERTICAL",
                         padding=3,
                         childs=[
                             (floor, SkylineParams.floor_count)
