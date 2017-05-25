@@ -3,6 +3,7 @@ import pygame
 from pygame import Color
 import colorsys
 
+
 class LinearLayout:
 
     HORIZONTAL = 1
@@ -18,7 +19,8 @@ class LinearLayout:
                  fill_width=False,
                  fill_height=False,
                  color=None,
-                 repeat_include=None,
+                 # repeat_include=None,
+                 childs=[],
                  intensity=1):
 
         if layout_type == "HORIZONTAL":
@@ -51,9 +53,16 @@ class LinearLayout:
         else:
             self.color = None
 
-        if repeat_include:
-            for i in range(repeat_include[1]):
-                self.add_child(repeat_include[0].get_instance())
+        for child in childs:
+            if type(child) is tuple:
+                for i in range(child[1]):
+                    self.add_child(child[0].get_instance())
+            else:
+                self.add_child(child)
+
+        # if repeat_include:
+        #     for i in range(repeat_include[1]):
+        #         self.add_child(repeat_include[0].get_instance())
 
     def draw(self):
         pass

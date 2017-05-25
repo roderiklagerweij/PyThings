@@ -6,4 +6,4 @@ from skyline.params import SkylineParams
 
 
 def get_instance():
-    return LinearLayout("HORIZONTAL", repeat_include=(window, SkylineParams.horizontal_windows))
+    return LinearLayout("HORIZONTAL", childs=[(window, SkylineParams.horizontal_windows)])

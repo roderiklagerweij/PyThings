@@ -9,8 +9,8 @@ from skyline import tower_middlepart
 
 def get_instance():
     return [
-        LinearLayout("VERTICAL", gravity="center"),
-        [
+        LinearLayout("VERTICAL", gravity="center", childs=[
+
             Triangle(width='fill',
                      height=50,
                      color=SkylineParams.wall_color,
@@ -20,11 +20,11 @@ def get_instance():
             tower_middlepart.get_instance(),
 
             LinearLayout("VERTICAL",
-                         color=(0, 0, 128),
-                         intensity=0.3,
+                         color=SkylineParams.wall_color,
+                         intensity=SkylineParams.intensity,
                          padding=3,
-                         repeat_include=(floor, SkylineParams.floor_count))
-        ],
-
-
+                         childs=[
+                             (floor, SkylineParams.floor_count)
+                         ])
+        ]),
     ]

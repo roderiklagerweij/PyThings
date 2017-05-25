@@ -21,10 +21,11 @@ arg_parser = ArgumentParser()
 
 def recurse_add_prog(layout, parent):
     for item in layout:
-        if type(item) is list:
-            recurse_add_prog(item, parent.childs[-1])
-        else:
-            parent.add_child(item)
+        parent.add_child(item)
+        # if type(item) is list:
+        #     recurse_add_prog(item, parent.childs[-1])
+        # else:
+        #     parent.add_child(item)
 
 while not game_over:
     screen.fill((0, 0, 0))
