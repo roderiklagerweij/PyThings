@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e4f97288-0ac1-46c9-8ad5-01905714a664" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/skyline/building.py" afterPath="$PROJECT_DIR$/skyline/building.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/linearlayout.py" afterPath="$PROJECT_DIR$/linearlayout.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/triangle.py" afterPath="$PROJECT_DIR$/triangle.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/skyline/tower_middlepart.py" afterPath="$PROJECT_DIR$/skyline/tower_middlepart.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ObjectGenerator.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,8 +43,8 @@
       <file leaf-file-name="building.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/skyline/building.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5620438" vertical-offset="99" max-vertical-offset="570">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.23357664" vertical-offset="84" max-vertical-offset="630">
+              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding>
                 <element signature="e#24#61#0" expanded="true" />
               </folding>
@@ -55,8 +55,8 @@
       <file leaf-file-name="tower_middlepart.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/skyline/tower_middlepart.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
-              <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="645">
+              <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
               <folding>
                 <element signature="e#24#37#0" expanded="true" />
               </folding>
@@ -125,8 +125,8 @@
       <file leaf-file-name="linearlayout.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/linearlayout.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1363" max-vertical-offset="2385">
-              <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1090" max-vertical-offset="2385">
+              <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
               <folding>
                 <element signature="e#23#36#0" expanded="true" />
               </folding>
@@ -169,11 +169,11 @@
         <option value="$PROJECT_DIR$/view.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/skyline/floor.py" />
-        <option value="$PROJECT_DIR$/skyline/tower_middlepart.py" />
         <option value="$PROJECT_DIR$/skyline/params.py" />
         <option value="$PROJECT_DIR$/skyline/window.py" />
         <option value="$PROJECT_DIR$/circle.py" />
         <option value="$PROJECT_DIR$/triangle.py" />
+        <option value="$PROJECT_DIR$/skyline/tower_middlepart.py" />
         <option value="$PROJECT_DIR$/linearlayout.py" />
         <option value="$PROJECT_DIR$/skyline/building.py" />
       </list>
@@ -624,16 +624,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/skyline/tower_middlepart.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
-          <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
-          <folding>
-            <element signature="e#24#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/skyline/window.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
@@ -666,18 +656,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/linearlayout.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1363" max-vertical-offset="2385">
-          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1090" max-vertical-offset="2385">
+          <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
           <folding>
             <element signature="e#23#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/skyline/tower_middlepart.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="645">
+          <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
+          <folding>
+            <element signature="e#24#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/skyline/building.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5620438" vertical-offset="99" max-vertical-offset="570">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.23357664" vertical-offset="84" max-vertical-offset="630">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
             <element signature="e#24#61#0" expanded="true" />
           </folding>

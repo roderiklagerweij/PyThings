@@ -19,15 +19,19 @@ def get_instance():
                 rotation=180,
                 intensity=SkylineParams.intensity),
 
-            tower_middlepart.get_instance(),
-
             LinearLayout(
                 "VERTICAL",
                 color=SkylineParams.wall_color,
                 intensity=SkylineParams.intensity,
-                padding=3,
                 childs=[
-                    (floor, SkylineParams.floor_count)
+                    tower_middlepart.get_instance(),
+                    LinearLayout(
+                        "VERTICAL",
+                        padding=3,
+                        childs=[
+                            (floor, SkylineParams.floor_count)
+                        ])
                 ])
+
         ]),
-    ]
+        ]
