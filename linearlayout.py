@@ -22,6 +22,7 @@ class LinearLayout:
                  height=0,
                  fill_width=False,
                  fill_height=False,
+                 rotation=0,
                  color=None,
                  childs=[],
                  intensity=1):
@@ -53,6 +54,7 @@ class LinearLayout:
         self.fill_height = fill_height
         self.width = width
         self.height = height
+        self.rotation = rotation
 
         if color:
             hsv = colorsys.rgb_to_hsv(color[0], color[1], color[2])

@@ -2,9 +2,9 @@ __author__ = 'Roderik'
 import pygame
 from pygame import Color
 from pygame import Surface
-from view import View
+from linearlayout import LinearLayout
 
-class Triangle(View):
+class Triangle(LinearLayout):
 
     def draw(self, screen):
         surface = Surface((self.width, self.height))
