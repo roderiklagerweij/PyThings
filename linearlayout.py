@@ -9,17 +9,20 @@ class LinearLayout:
     HORIZONTAL = 1
     VERTICAL = 2
 
-    def __init__(self, layout_type,
+    def __init__(self,
+                 layout_type,
                  gravity=None,
                  padding=0,
                  padding_left=None,
                  padding_right=None,
                  padding_top=None,
                  padding_bottom=None,
+                 margin=0,
+                 width=0,
+                 height=0,
                  fill_width=False,
                  fill_height=False,
                  color=None,
-                 # repeat_include=None,
                  childs=[],
                  intensity=1):
 
@@ -44,8 +47,12 @@ class LinearLayout:
         if padding_bottom:
             self.padding_bottom = padding_bottom
 
+        self.margin = margin
+
         self.fill_width = fill_width
         self.fill_height = fill_height
+        self.width = width
+        self.height = height
 
         if color:
             hsv = colorsys.rgb_to_hsv(color[0], color[1], color[2])
@@ -60,10 +67,6 @@ class LinearLayout:
             else:
                 self.add_child(child)
 
-        # if repeat_include:
-        #     for i in range(repeat_include[1]):
-        #         self.add_child(repeat_include[0].get_instance())
-
     def draw(self):
         pass
 
@@ -74,22 +77,33 @@ class LinearLayout:
         pass
 
     def measure(self):
-        self.width = 0
-        self.height = 0
+        width = 0
+        height = 0
 
         for child in self.childs:
             child.measure()
             if self.layout_type == LinearLayout.HORIZONTAL:
-                self.width += child.width
-                if self.height < child.height:
-                    self.height = child.height
+                width += child.width
+                if height < child.height:
+                    height = child.height
             elif self.layout_type == LinearLayout.VERTICAL:
-                self.height += child.height
-                if self.width < child.width:
-                    self.width = child.width
+                height += child.height
+                if width < child.width:
+                    width = child.width
 
-        self.width += self.padding_left + self.padding_right
-        self.height += self.padding_top + self.padding_bottom
+        width += self.padding_left + self.padding_right
+        height += self.padding_top + self.padding_bottom
+
+        # assign to self
+        # if provided dimension is more than calculated, keep the provided
+        if self.width < width:
+            self.width = width
+        if self.height < height:
+            self.height = height
+
+        # add the margin
+        self.width += 2 * self.margin
+        self.height += 2 * self.margin
 
     def post_measure(self, parent_width, parent_height):
         if self.fill_width:
@@ -100,17 +114,17 @@ class LinearLayout:
         for child in self.childs:
             child.post_measure(self.width, self.height)
 
-    def layout(self, offset_x, offset_y, parent_width, parent_height):
+    def layout(self, offset_x, offset_y, available_width, available_height):
         self.offset_x = offset_x
         self.offset_y = offset_y
 
         if self.gravity == 'top':
-            self.offset_y -= (parent_height - self.height)
+            self.offset_y -= (available_height - self.height)
         elif self.gravity == 'right':
-            self.offset_x -= (parent_width - self.width)
+            self.offset_x -= (available_width - self.width)
         elif self.gravity == 'center':
-            self.offset_x = (parent_width/2) - self.width / 2
-            self.offset_y = (parent_height/2) - self.height / 2
+            self.offset_x += ((available_width/2) - (self.width / 2))
+            self.offset_y += ((available_height/2) - (self.height / 2))
 
         draw_x = self.offset_x + self.padding_left
         draw_y = self.offset_y + self.padding_top
@@ -127,7 +141,12 @@ class LinearLayout:
 
     def draw(self, screen):
         if self.color:
-            pygame.draw.rect(screen, self.color, (self.offset_x, self.offset_y, self.width, self.height), 0)
+            pygame.draw.rect(screen, self.color, (
+                self.offset_x+self.margin,
+                self.offset_y+self.margin,
+                self.width - (self.margin + self.margin),
+                self.height - (self.margin + self.margin)
+            ), 0)
 
         for child in self.childs:
             child.draw(screen)
