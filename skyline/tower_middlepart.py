@@ -1,7 +1,6 @@
 __author__ = 'Roderik'
 
 import random
-from view import View
 from circle import Circle
 from linearlayout import LinearLayout
 from skyline.params import SkylineParams
@@ -29,14 +28,18 @@ def get_instance():
     elif selection == 2:
         return LinearLayout(
             layout_type="HORIZONTAL",
+            fill_width=True,
+            debug_id="wrap_middle_part",
             childs=[
-
+                LinearLayout(fill_width=True),
                 LinearLayout(width=2, height=10, color=(255, 255, 0), margin=2),
                 LinearLayout(width=2, height=10, color=(255, 255, 0), margin=2),
                 LinearLayout(width=2, height=10, color=(255, 255, 0), margin=2),
+                LinearLayout(fill_width=True),
                 LinearLayout(width=2, height=10, color=(255, 255, 0), margin=2),
                 LinearLayout(width=2, height=10, color=(255, 255, 0), margin=2),
-                LinearLayout(width=2, height=10, color=(255, 255, 0), margin=2)
+                LinearLayout(width=2, height=10, color=(255, 255, 0), margin=2),
+                LinearLayout(fill_width=True)
             ]
         )
 

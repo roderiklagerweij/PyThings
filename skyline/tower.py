@@ -21,6 +21,7 @@ def get_instance():
             LinearLayout(
                 layout_type="VERTICAL",
                 color=SkylineParams.wall_color,
+                debug_id="one level deeper",
                 intensity=SkylineParams.intensity,
                 childs=[
                     tower_middlepart.get_instance(),

@@ -25,12 +25,16 @@ class LinearLayout:
                  rotation=0,
                  color=None,
                  childs=[],
+                 debug_id=None,
                  intensity=1):
 
         if layout_type == "HORIZONTAL":
             self.layout_type = LinearLayout.HORIZONTAL
         elif layout_type == "VERTICAL":
             self.layout_type = LinearLayout.VERTICAL
+        else:
+            self.layout_type = None
+
         self.childs = []
         self.offset_x = 0
         self.offset_y = 0
@@ -48,6 +52,7 @@ class LinearLayout:
         if padding_bottom:
             self.padding_bottom = padding_bottom
 
+        self.debug_id = debug_id
         self.margin = margin
 
         self.fill_width = fill_width
@@ -107,14 +112,49 @@ class LinearLayout:
         self.width += 2 * self.margin
         self.height += 2 * self.margin
 
-    def post_measure(self, parent_width, parent_height):
+    def post_measure(self, available_fill_width, available_fill_height):
         if self.fill_width:
-            self.width = parent_width
+            self.width = available_fill_width
         if self.fill_height:
-            self.height = parent_height
+            self.height = available_fill_height
 
-        for child in self.childs:
-            child.post_measure(self.width, self.height)
+        width_weight_sum = 0
+        height_weight_sum = 0
+        used_width = 0
+        used_height = 0
+        if self.layout_type == LinearLayout.HORIZONTAL:
+            for child in self.childs:
+                if child.fill_width:
+                    width_weight_sum += 1
+                else:
+                    used_width += child.width
+
+            width_weight_sum = max(width_weight_sum, 1)
+
+            # if self.debug_id:
+            #     print (self.debug_id, 'Post measure:', available_fill_width, self.width, used_width, self.fill_width, float(self.width - used_width) / float(width_weight_sum))
+
+            for child in self.childs:
+                child.post_measure(
+                    float(self.width - used_width) / float(width_weight_sum),
+                    self.height)
+
+        elif self.layout_type == LinearLayout.VERTICAL:
+            for child in self.childs:
+                if child.fill_height:
+                    height_weight_sum += 1
+                else:
+                    used_height += child.height
+
+            height_weight_sum = max(height_weight_sum, 1)
+
+            # if self.debug_id:
+            #     print (self.debug_id, 'Post measure:', available_fill_height, self.height, used_height, self.fill_height, float(self.height - used_height) / float(height_weight_sum))
+
+            for child in self.childs:
+                child.post_measure(
+                    self.width,
+                    float(self.height - used_height) / float(height_weight_sum))
 
     def layout(self, offset_x, offset_y, available_width, available_height):
         self.offset_x = offset_x
