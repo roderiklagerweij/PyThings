@@ -3,11 +3,13 @@ __author__ = 'Roderik'
 from linearlayout import LinearLayout
 from triangle import Triangle
 from skyline.params import SkylineParams
-from skyline import tower_floor
+from skyline import tower_section
 from skyline import tower_middlepart
 
 
 def get_instance():
+    SkylineParams.init_params()
+
     return [
         LinearLayout("VERTICAL", gravity="center", childs=[
 
@@ -20,7 +22,6 @@ def get_instance():
 
             LinearLayout(
                 layout_type="VERTICAL",
-                color=SkylineParams.wall_color,
                 debug_id="one level deeper",
                 intensity=SkylineParams.intensity,
                 childs=[
@@ -28,9 +29,12 @@ def get_instance():
                     LinearLayout(
                         layout_type="VERTICAL",
                         padding=3,
-                        childs=[
-                            (tower_floor, SkylineParams.floor_count)
-                        ])
+                        childs=
+                        [
+                            tower_section.get_instance(
+                                SkylineParams.get_horizontal_window_count_for_floor(x),
+                                SkylineParams.get_vertical_window_count_for_floor(x)) for x in range(1, 1+SkylineParams.section_count)])
+
                 ])
 
         ]),

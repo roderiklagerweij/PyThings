@@ -5,6 +5,7 @@ from circle import Circle
 from linearlayout import LinearLayout
 from skyline.params import SkylineParams
 
+
 def get_instance():
     selection = random.randint(0, 2)
 
@@ -29,7 +30,8 @@ def get_instance():
         return LinearLayout(
             layout_type="HORIZONTAL",
             fill_width=True,
-            debug_id="wrap_middle_part",
+            color=SkylineParams.wall_color,
+            intensity=SkylineParams.intensity,
             childs=[
                 LinearLayout(fill_width=True),
                 LinearLayout(width=2, height=10, color=(255, 255, 0), margin=2),
@@ -42,12 +44,3 @@ def get_instance():
                 LinearLayout(fill_width=True)
             ]
         )
-
-
-    # selection = random.randint(0, 1)
-    # if selection == 0:
-    #
-    # elif selection == 1:
-    #     pass
-    # elif selection == 2:
-    #     pass

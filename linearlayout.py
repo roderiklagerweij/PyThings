@@ -164,6 +164,8 @@ class LinearLayout:
             self.offset_y -= (available_height - self.height)
         elif self.gravity == 'right':
             self.offset_x -= (available_width - self.width)
+        elif self.gravity == 'center_horizontal':
+            self.offset_x += ((available_width/2) - (self.width / 2))
         elif self.gravity == 'center':
             self.offset_x += ((available_width/2) - (self.width / 2))
             self.offset_y += ((available_height/2) - (self.height / 2))

@@ -58,5 +58,6 @@ while not game_over:
                 game_over = True
 
     pygame.display.flip()
-    pygame.time.delay(100)
+    # pygame.time.delay(100)
+    pygame.time.delay(1500)
 
