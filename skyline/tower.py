@@ -33,7 +33,7 @@ def get_instance():
                         [
                             tower_section.get_instance(
                                 SkylineParams.get_horizontal_window_count_for_floor(x),
-                                SkylineParams.get_vertical_window_count_for_floor(x)) for x in range(1, 1+SkylineParams.section_count)])
+                                SkylineParams.get_vertical_window_count_for_floor(x)) for x in range(0, SkylineParams.section_count)])
 
                 ])
 

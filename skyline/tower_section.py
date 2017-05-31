@@ -19,4 +19,4 @@ def get_floor(windows_horizontal):
 
 
 def get_tower_window():
-    return LinearLayout(width=10, height=10, color=(255, 255, 0), margin=5, intensity=random.random())
+    return LinearLayout(width=6, height=6, color=(255, 255, 0), margin=3, intensity=random.random())
