@@ -165,6 +165,10 @@ class LinearLayout:
                     float(self.height - used_height) / float(height_weight_sum))
 
     def layout(self, offset_x, offset_y, available_width, available_height):
+        if self.debug_id:
+            pass
+            # print (offset_x, offset_y, available_width, available_height, self.width, self.height)
+        
         self.offset_x = offset_x
         self.offset_y = offset_y
 

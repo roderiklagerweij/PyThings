@@ -16,7 +16,7 @@ def get_instance():
             color=SkylineParams.wall_color,
             id=TOWER_MIDDLE_PART,
             intensity=SkylineParams.intensity,
-            gravity="center_vertical",
+            gravity="center_horizontal",
             padding=5,
             childs=[
                 Circle(5, color=(255, 255, 0), gravity="center")
@@ -24,7 +24,7 @@ def get_instance():
     elif selection == 1:
         return LinearLayout(
             id=TOWER_MIDDLE_PART,
-            gravity="center_vertical",
+            gravity="center_horizontal",
             height=5,
             color=(255, 255, 0),
             margin=5
@@ -33,7 +33,7 @@ def get_instance():
         return LinearLayout(
             layout_type="HORIZONTAL",
             id=TOWER_MIDDLE_PART,
-            gravity="center_vertical",
+            gravity="center_horizontal",
             color=SkylineParams.wall_color,
             intensity=SkylineParams.intensity,
             childs=[

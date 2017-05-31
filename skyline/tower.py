@@ -16,14 +16,14 @@ def get_instance():
             Triangle(
                 height=50,
                 color=SkylineParams.wall_color,
-                gravity="center_vertical",
+                gravity="center_horizontal",
+                debug_id="roof",
                 id=TOWER_ROOF,
                 rotation=180,
                 intensity=SkylineParams.intensity),
 
             LinearLayout(
                 layout_type="VERTICAL",
-                debug_id="one level deeper",
                 childs=[
                     tower_middlepart.get_instance(),
                     LinearLayout(
