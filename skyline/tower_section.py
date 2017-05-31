@@ -5,10 +5,16 @@ __author__ = 'Roderik'
 from linearlayout import LinearLayout
 import random
 
+TOP_TOWER_SECTION = "top_tower_section"
 
-def get_instance(windows_horizontal, windows_vertical):
+def get_instance(section_index, windows_horizontal, windows_vertical):
+    id = None
+    if section_index == 0:
+        id = TOP_TOWER_SECTION
+        
     return LinearLayout(
         layout_type="VERTICAL",
+        id=id,
         color=SkylineParams.wall_color,
         intensity=SkylineParams.intensity,
         gravity="center_horizontal",

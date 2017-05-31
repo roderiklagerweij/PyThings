@@ -25,8 +25,10 @@ class LinearLayout:
                  rotation=0,
                  color=None,
                  childs=[],
+                 id=None,
                  debug_id=None,
                  intensity=1):
+        self.id = id
 
         if layout_type == "HORIZONTAL":
             self.layout_type = LinearLayout.HORIZONTAL
