@@ -14,9 +14,9 @@ def get_instance():
     return LinearLayout("VERTICAL", gravity="center", childs=[
 
             Triangle(
-                fill_width=True,
                 height=50,
                 color=SkylineParams.wall_color,
+                gravity="center_vertical",
                 id=TOWER_ROOF,
                 rotation=180,
                 intensity=SkylineParams.intensity),
