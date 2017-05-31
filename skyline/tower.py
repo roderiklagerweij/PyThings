@@ -8,7 +8,6 @@ from skyline import tower_middlepart
 
 
 def get_instance():
-    SkylineParams.init_params()
 
     return [
         LinearLayout("VERTICAL", gravity="center", childs=[

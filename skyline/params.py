@@ -30,3 +30,4 @@ class SkylineParams:
     def get_vertical_window_count_for_floor(section_index):
         value = round(math.pow(SkylineParams.vertical_decrease_factor, (SkylineParams.section_count - section_index) - 1) * SkylineParams.vertical_windows)
         return value
+
