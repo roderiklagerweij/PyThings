@@ -37,9 +37,7 @@ while not game_over:
         view_hierarchy = []
         view_hierarchy.append(top_layout)
 
-        # recurse_add_prog(house.get_instance(), top_layout)
         top_layout.add_child(skyline.get_instance())
-        # recurse_add_prog(skyline.get_instance(), top_layout)
 
         for view in view_hierarchy:
             view.measure()
@@ -68,7 +66,4 @@ while not game_over:
                 new_instance = True
                 print (pressed_key)
 
-
     pygame.time.delay(100)
-    # pygame.time.delay(15000)
-

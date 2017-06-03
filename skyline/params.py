@@ -8,7 +8,7 @@ class SkylineParams:
 
     horizontal_windows = None
     vertical_windows = None
-    section_count = 4
+    section_count = 0
     wall_color = None
     intensity = None
     middle_part_height = 0
@@ -16,6 +16,7 @@ class SkylineParams:
 
     @staticmethod
     def init_params():
+        SkylineParams.section_count = random.choice([1, 2, 3, 4, 5])
         SkylineParams.horizontal_windows = round(random.random()*6) + 3
         SkylineParams.vertical_windows = round(random.random()*5) + 3
         SkylineParams.wall_color = (0, 0, 128)
