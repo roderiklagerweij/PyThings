@@ -12,7 +12,7 @@ TOWER_SECTION = "tower_section"
 
 def get_instance():
 
-    return LinearLayout("VERTICAL", gravity="center", childs=[
+    return LinearLayout("VERTICAL", debug_id="tower", gravity="center", childs=[
 
         roof.get_instance(),
 
