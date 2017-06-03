@@ -23,7 +23,7 @@ class SkylineParams:
         SkylineParams.intensity = (random.random() * 0.5) + 0.2
         SkylineParams.horizontal_decrease_factor = (random.random() * 0.3) + 0.7
         SkylineParams.vertical_decrease_factor = (random.random() * 0.3) + 0.7
-        SkylineParams.middle_part_height = random.choice([10, 15, 20, 25, 30])
+        SkylineParams.middle_part_height = random.choice([8, 12, 16])
         SkylineParams.has_section_divider = random.choice([True, False])
 
     @staticmethod

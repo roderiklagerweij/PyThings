@@ -19,7 +19,7 @@ def get_instance():
             gravity="center_horizontal",
             padding=5,
             childs=[
-                Circle(random.choice([5, 10]), color=(255, 255, 0), gravity="center")
+                Circle(random.choice([3, 6]), color=(255, 255, 0), gravity="center")
             ])
     elif selection == 1:
         return LinearLayout(
