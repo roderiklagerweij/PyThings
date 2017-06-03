@@ -19,7 +19,22 @@ def get_instance(section_index, windows_horizontal, windows_vertical):
         intensity=SkylineParams.intensity,
         padding=3,
         gravity="center_horizontal",
-        childs=[get_floor(windows_horizontal) for x in range(windows_vertical)])
+        childs=
+            [LinearLayout(
+                layout_type="VERTICAL",
+                fill_width=True,
+                color=SkylineParams.wall_color,
+                intensity=SkylineParams.intensity,
+                gravity="center_horizontal",
+                padding=5,
+                visible=SkylineParams.has_section_divider,
+                childs=
+                [LinearLayout(
+                    fill_width=True,
+                    height=5,
+                    color=(255, 255, 0))])
+            ] + [get_floor(windows_horizontal) for x in range(windows_vertical)])
+
 
 
 def get_floor(windows_horizontal):

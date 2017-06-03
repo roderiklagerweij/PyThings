@@ -11,6 +11,8 @@ class SkylineParams:
     section_count = 4
     wall_color = None
     intensity = None
+    middle_part_height = 0
+    has_section_divider = False
 
     @staticmethod
     def init_params():
@@ -20,6 +22,8 @@ class SkylineParams:
         SkylineParams.intensity = (random.random() * 0.5) + 0.2
         SkylineParams.horizontal_decrease_factor = (random.random() * 0.3) + 0.7
         SkylineParams.vertical_decrease_factor = (random.random() * 0.3) + 0.7
+        SkylineParams.middle_part_height = random.choice([10, 15, 20, 25, 30])
+        SkylineParams.has_section_divider = random.choice([True, False])
 
     @staticmethod
     def get_horizontal_window_count_for_floor(section_index):

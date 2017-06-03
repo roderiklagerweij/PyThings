@@ -19,23 +19,9 @@ def get_instance():
             gravity="center_horizontal",
             padding=5,
             childs=[
-                Circle(5, color=(255, 255, 0), gravity="center")
+                Circle(random.choice([5, 10]), color=(255, 255, 0), gravity="center")
             ])
     elif selection == 1:
-        return LinearLayout(
-            id=TOWER_MIDDLE_PART,
-            color=SkylineParams.wall_color,
-            intensity=SkylineParams.intensity,
-            gravity="center_horizontal",
-            padding=5,
-            childs=[
-                LinearLayout(
-                    fill_width=True,
-                    height=5,
-                    color=(255, 255, 0)
-                )
-            ])
-    elif selection == 2:
         return LinearLayout(
             layout_type="HORIZONTAL",
             id=TOWER_MIDDLE_PART,
@@ -45,24 +31,26 @@ def get_instance():
             childs=[
                 LinearLayout(fill_width=True),
                 LinearLayout(padding=2, childs=[
-                    LinearLayout(width=2, height=10, color=(255, 255, 0)),
+                    LinearLayout(width=2, height=SkylineParams.middle_part_height, color=(255, 255, 0)),
                     ]),
                 LinearLayout(padding=2, childs=[
-                    LinearLayout(width=2, height=10, color=(255, 255, 0)),
+                    LinearLayout(width=2, height=SkylineParams.middle_part_height, color=(255, 255, 0)),
                     ]),
                 LinearLayout(padding=2, childs=[
-                    LinearLayout(width=2, height=10, color=(255, 255, 0)),
+                    LinearLayout(width=2, height=SkylineParams.middle_part_height, color=(255, 255, 0)),
                     ]),
                 LinearLayout(fill_width=True),
                 LinearLayout(padding=2, childs=[
-                    LinearLayout(width=2, height=10, color=(255, 255, 0)),
+                    LinearLayout(width=2, height=SkylineParams.middle_part_height, color=(255, 255, 0)),
                     ]),
                 LinearLayout(padding=2, childs=[
-                    LinearLayout(width=2, height=10, color=(255, 255, 0)),
+                    LinearLayout(width=2, height=SkylineParams.middle_part_height, color=(255, 255, 0)),
                     ]),
                 LinearLayout(padding=2, childs=[
-                    LinearLayout(width=2, height=10, color=(255, 255, 0)),
+                    LinearLayout(width=2, height=SkylineParams.middle_part_height, color=(255, 255, 0)),
                     ]),
                 LinearLayout(fill_width=True)
             ]
         )
+    elif selection == 2:
+        return LinearLayout()

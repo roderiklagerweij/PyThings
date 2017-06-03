@@ -26,7 +26,8 @@ class LinearLayout:
                  childs=[],
                  id=None,
                  debug_id=None,
-                 intensity=1):
+                 intensity=1,
+                 visible=True):
         self.id = id
 
         if layout_type == "HORIZONTAL":
@@ -76,10 +77,19 @@ class LinearLayout:
             else:
                 self.add_child(child)
 
+        self.visible = visible
+
+        # validation
+        if layout_type is None and len(self.childs) > 1:
+            raise ValueError("Layout type cannot be none when there is more than one child!")
+
     def draw(self):
         pass
 
     def measure(self):
+        if not self.visible:
+            return
+
         width = 0
         height = 0
 
@@ -111,6 +121,9 @@ class LinearLayout:
             print ('measure for', self.debug_id + ':\n\twidth:', self.width, '\n\twidth with padding:', self.width_with_padding, '\n\theight:',self.height, '\n\theight with padding:',self.height_with_padding)
 
     def post_measure(self, available_fill_width, available_fill_height):
+        if not self.visible:
+            return
+
         if self.debug_id == 'light_stroke':
             print ('***', self.fill_width, available_fill_width, self.padding_left, self.padding_right)
 
@@ -162,6 +175,9 @@ class LinearLayout:
                 child.post_measure(self.width, self.height)
 
     def layout(self, offset_x, offset_y, available_width, available_height):
+        if not self.visible:
+            return
+
         if self.debug_id:
             print ('layout', self.debug_id, offset_x, offset_y, available_width, available_height, self.width, self.height)
 
@@ -192,6 +208,9 @@ class LinearLayout:
         self.childs.append(child)
 
     def draw(self, screen):
+        if not self.visible:
+            return
+
 
         if self.debug_id:
             print ('draw', self.debug_id, self.offset_x, self.width, self.width_with_padding)
