@@ -15,6 +15,9 @@ def get_instance(section_index, windows_horizontal, windows_vertical):
     return LinearLayout(
         layout_type="VERTICAL",
         id=id,
+        color=SkylineParams.wall_color,
+        intensity=SkylineParams.intensity,
+        padding=3,
         gravity="center_horizontal",
         childs=[get_floor(windows_horizontal) for x in range(windows_vertical)])
 

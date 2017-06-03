@@ -13,13 +13,28 @@ def get_instance():
 
     return LinearLayout("VERTICAL", gravity="center", childs=[
 
-        Triangle(
-            height=50,
-            color=SkylineParams.wall_color,
-            gravity="center_horizontal",
+        LinearLayout(
             id=TOWER_ROOF,
-            rotation=180,
-            intensity=SkylineParams.intensity),
+            layout_type="VERTICAL",
+            gravity="center_horizontal",
+            childs=[
+
+            LinearLayout(
+                width=3,
+                height=10,
+                color=SkylineParams.wall_color,
+                intensity=SkylineParams.intensity,
+                gravity="center_horizontal"
+            ),
+
+            Triangle(
+                height=50,
+                fill_width=True,
+                color=SkylineParams.wall_color,
+                gravity="center_horizontal",
+                rotation=180,
+                intensity=SkylineParams.intensity),
+            ]),
 
         LinearLayout(
             layout_type="VERTICAL",
@@ -27,9 +42,6 @@ def get_instance():
                 tower_middlepart.get_instance(),
                 LinearLayout(
                     layout_type="VERTICAL",
-                    color=SkylineParams.wall_color,
-                    intensity=SkylineParams.intensity,
-                    padding=3,
                     childs=
                     [
                         tower_section.get_instance(
