@@ -10,16 +10,16 @@ def apply_constraint(parent, id_list):
         views.extend(view_finder.find_views_with_id(id, parent))
 
     for i in range(10):
+        # print ('iteration')
         parent.measure()
         parent.post_measure(640, 480)
 
         max_width = 0
         for view in views:
-            if view.width > max_width:
-                # print ('new max width:', view, view.width)
-                max_width = view.width
-
-        # print (max_width)
+            if view.get_width() > max_width:
+                max_width = view.get_width()
+                # print ('new max width:', max_width, 'from view', view)
 
         for view in views:
-            view.width = max_width
+            # print ('set', max_width, 'to', view)
+            view.set_width(max_width)

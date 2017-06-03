@@ -79,12 +79,6 @@ class LinearLayout:
     def draw(self):
         pass
 
-    def get_width(self):
-        pass
-
-    def get_height(self):
-        pass
-
     def measure(self):
         width = 0
         height = 0
@@ -114,17 +108,23 @@ class LinearLayout:
         #     print (width, height, self.width, self.height)
 
     def get_width(self):
-        # add the margin
         return self.width + (2 * self.margin)
 
     def get_height(self):
         return self.height + (2 * self.margin)
 
+    def set_width(self, width):
+        self.width = width - float(2 * self.margin)
+
+    def set_height(self, height):
+        self.height = height - float(2 * self.margin)
+
     def post_measure(self, available_fill_width, available_fill_height):
+
         if self.fill_width:
-            self.width = available_fill_width
+            self.set_width(available_fill_width)
         if self.fill_height:
-            self.height = available_fill_height
+            self.set_height(available_fill_height)
 
         width_weight_sum = 0
         height_weight_sum = 0
@@ -166,9 +166,8 @@ class LinearLayout:
 
     def layout(self, offset_x, offset_y, available_width, available_height):
         if self.debug_id:
-            pass
-            # print (offset_x, offset_y, available_width, available_height, self.width, self.height)
-        
+            print (offset_x, offset_y, available_width, available_height, self.width, self.height)
+
         self.offset_x = offset_x
         self.offset_y = offset_y
 
@@ -196,6 +195,9 @@ class LinearLayout:
         self.childs.append(child)
 
     def draw(self, screen):
+
+        if self.debug_id:
+            print (self.debug_id, self.offset_x, self.margin)
         if self.color:
             pygame.draw.rect(screen, self.color, (
                 self.offset_x+self.margin,
