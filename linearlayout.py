@@ -17,7 +17,6 @@ class LinearLayout:
                  padding_right=None,
                  padding_top=None,
                  padding_bottom=None,
-                 margin=0,
                  width=0,
                  height=0,
                  fill_width=False,
@@ -55,12 +54,13 @@ class LinearLayout:
             self.padding_bottom = padding_bottom
 
         self.debug_id = debug_id
-        self.margin = margin
 
         self.fill_width = fill_width
         self.fill_height = fill_height
         self.width = width
         self.height = height
+        self.width_with_padding = 0
+        self.height_with_padding = 0
         self.rotation = rotation
 
         if color:
@@ -86,16 +86,16 @@ class LinearLayout:
         for child in self.childs:
             child.measure()
             if self.layout_type == LinearLayout.HORIZONTAL:
-                width += child.get_width()
-                if height < child.get_height():
-                    height = child.get_height()
+                width += child.width_with_padding
+                if height < child.height_with_padding:
+                    height = child.height_with_padding
             elif self.layout_type == LinearLayout.VERTICAL:
-                height += child.get_height()
-                if width < child.get_width():
-                    width = child.get_width()
-
-        width += self.padding_left + self.padding_right
-        height += self.padding_top + self.padding_bottom
+                height += child.height_with_padding
+                if width < child.width_with_padding:
+                    width = child.width_with_padding
+            else:  # should only be one child
+                width = child.width_with_padding
+                height = child.height_with_padding
 
         # assign to self
         # if provided dimension is more than calculated, keep the provided
@@ -104,27 +104,20 @@ class LinearLayout:
         if self.height < height:
             self.height = height
 
-        # if self.debug_id:
-        #     print (width, height, self.width, self.height)
+        self.width_with_padding = self.width + self.padding_left + self.padding_right
+        self.height_with_padding = self.height + self.padding_top + self.padding_bottom
 
-    def get_width(self):
-        return self.width + (2 * self.margin)
-
-    def get_height(self):
-        return self.height + (2 * self.margin)
-
-    def set_width(self, width):
-        self.width = width - float(2 * self.margin)
-
-    def set_height(self, height):
-        self.height = height - float(2 * self.margin)
+        if self.debug_id:
+            print ('measure for', self.debug_id + ':\n\twidth:', self.width, '\n\twidth with padding:', self.width_with_padding, '\n\theight:',self.height, '\n\theight with padding:',self.height_with_padding)
 
     def post_measure(self, available_fill_width, available_fill_height):
+        if self.debug_id == 'light_stroke':
+            print ('***', self.fill_width, available_fill_width, self.padding_left, self.padding_right)
 
         if self.fill_width:
-            self.set_width(available_fill_width)
+            self.width = available_fill_width - (self.padding_left + self.padding_right)
         if self.fill_height:
-            self.set_height(available_fill_height)
+            self.height = available_fill_height - (self.padding_top + self.padding_bottom)
 
         width_weight_sum = 0
         height_weight_sum = 0
@@ -135,7 +128,7 @@ class LinearLayout:
                 if child.fill_width:
                     width_weight_sum += 1
                 else:
-                    used_width += child.get_width()
+                    used_width += child.width_with_padding
 
             width_weight_sum = max(width_weight_sum, 1)
 
@@ -152,7 +145,7 @@ class LinearLayout:
                 if child.fill_height:
                     height_weight_sum += 1
                 else:
-                    used_height += child.get_height()
+                    used_height += child.height_with_padding
 
             height_weight_sum = max(height_weight_sum, 1)
 
@@ -164,32 +157,36 @@ class LinearLayout:
                     self.width,
                     float(self.height - used_height) / float(height_weight_sum))
 
+        else:  # should only be one child
+            for child in self.childs:
+                child.post_measure(self.width, self.height)
+
     def layout(self, offset_x, offset_y, available_width, available_height):
         if self.debug_id:
-            print (offset_x, offset_y, available_width, available_height, self.width, self.height)
+            print ('layout', self.debug_id, offset_x, offset_y, available_width, available_height, self.width, self.height)
 
         self.offset_x = offset_x
         self.offset_y = offset_y
 
         if self.gravity == 'top':
-            self.offset_y -= (available_height - self.height)
+            self.offset_y -= (available_height - self.height_with_padding)
         elif self.gravity == 'right':
-            self.offset_x -= (available_width - self.width)
+            self.offset_x -= (available_width - self.width_with_padding)
         elif self.gravity == 'center_horizontal':
-            self.offset_x += ((available_width/2) - (self.width / 2))
+            self.offset_x += ((available_width/2) - (self.width_with_padding / 2))
         elif self.gravity == 'center':
-            self.offset_x += ((available_width/2) - (self.width / 2))
-            self.offset_y += ((available_height/2) - (self.height / 2))
+            self.offset_x += ((available_width/2) - (self.width_with_padding / 2))
+            self.offset_y += ((available_height/2) - (self.height_with_padding / 2))
 
         draw_x = self.offset_x + self.padding_left
         draw_y = self.offset_y + self.padding_top
 
         for child in self.childs:
-            child.layout(draw_x, draw_y, self.width-(self.padding_left+self.padding_right), self.height-(self.padding_top+self.padding_bottom))
+            child.layout(draw_x, draw_y, self.width, self.height)
             if self.layout_type == LinearLayout.HORIZONTAL:
-                draw_x += child.get_width()
+                draw_x += child.width_with_padding
             elif self.layout_type == LinearLayout.VERTICAL:
-                draw_y += child.get_height()
+                draw_y += child.height_with_padding
 
     def add_child(self, child):
         self.childs.append(child)
@@ -197,13 +194,14 @@ class LinearLayout:
     def draw(self, screen):
 
         if self.debug_id:
-            print (self.debug_id, self.offset_x, self.margin)
+            print ('draw', self.debug_id, self.offset_x, self.width, self.width_with_padding)
+
         if self.color:
             pygame.draw.rect(screen, self.color, (
-                self.offset_x+self.margin,
-                self.offset_y+self.margin,
-                self.width,
-                self.height
+                self.offset_x,
+                self.offset_y,
+                self.width_with_padding,
+                self.height_with_padding
             ), 0)
 
         for child in self.childs:

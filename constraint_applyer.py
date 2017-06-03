@@ -16,10 +16,11 @@ def apply_constraint(parent, id_list):
 
         max_width = 0
         for view in views:
-            if view.get_width() > max_width:
-                max_width = view.get_width()
+            if view.width > max_width:
+                max_width = view.width
                 # print ('new max width:', max_width, 'from view', view)
 
         for view in views:
             # print ('set', max_width, 'to', view)
-            view.set_width(max_width)
+            view.width_with_padding = max_width
+            view.width = max_width - (view.padding_left + view.padding_right)
