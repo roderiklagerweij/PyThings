@@ -83,9 +83,6 @@ class LinearLayout:
         if layout_type is None and len(self.childs) > 1:
             raise ValueError("Layout type cannot be none when there is more than one child!")
 
-    def draw(self):
-        pass
-
     def measure(self):
         if not self.visible:
             return
