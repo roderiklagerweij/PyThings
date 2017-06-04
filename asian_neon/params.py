@@ -28,9 +28,11 @@ class AsianNeonParams:
 
         AsianNeonParams.text = ''
         AsianNeonParams.sub_text = ''
+
         for i in range(random.randint(1, 9)):
             AsianNeonParams.text += random.choice(string.ascii_letters)
-        for i in range(random.randint(1, 9)):
+
+        for i in range(random.randint(1, len(AsianNeonParams.text))):
             AsianNeonParams.sub_text += random.choice(string.ascii_letters)
 
         text_colors = [
