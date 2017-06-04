@@ -5,7 +5,7 @@ import pygame
 class TextView(LinearLayout):
 
     def __init__(self, text, text_color, font_size, *args, **kwargs):
-        self.font = pygame.font.SysFont("comicsansms", font_size)
+        self.font = pygame.font.Font("DFXSM1B.ttf", font_size)
         self.text_color = text_color
         self.text = text
         w, h = self.font.size(text)
