@@ -31,7 +31,7 @@ def get_instance():
             childs=[
                 # outer border
                 LinearLayout(
-                    color=(255, 0, 0),
+                    color=AsianNeonParams.border_color,
                     padding=2,
                     childs=[
                         LinearLayout(
@@ -40,7 +40,7 @@ def get_instance():
                             childs=[
                                 # second inner border
                                 LinearLayout(
-                                    color=(255, 0, 0),
+                                    color=AsianNeonParams.border_color,
                                     padding=2,
                                     childs=[
                                         get_inner_text_board()

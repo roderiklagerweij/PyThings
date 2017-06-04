@@ -9,6 +9,7 @@ class AsianNeonParams:
     text_color = None
     text_size = None
     background_color = None
+    border_color = None
 
     @staticmethod
     def init_params():
@@ -47,4 +48,10 @@ class AsianNeonParams:
             (1, 0, 191),
             (10, 38, 83),
             (207, 225, 251)
+        ])
+
+        AsianNeonParams.border_color = random.choice([
+            (255, 0, 0),
+            (252, 235, 108),
+            (255, 255, 0)
         ])
