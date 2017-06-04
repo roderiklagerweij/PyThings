@@ -9,7 +9,7 @@ import random
 TOWER_ROOF = "tower_roof"
 
 def get_instance():
-    selection = random.randint(0, 2)
+    selection = random.randint(0, 3)
 
     if selection == 0:
         return LinearLayout()
@@ -64,4 +64,12 @@ def get_instance():
                 )
             ]
         )
+    elif selection == 3:
+        return LinearLayout(
+                    width=3,
+                    height=10,
+                    color=SkylineParams.wall_color,
+                    intensity=SkylineParams.intensity,
+                    gravity="center_horizontal"
+                )
 

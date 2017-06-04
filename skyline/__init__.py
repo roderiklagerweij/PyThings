@@ -15,7 +15,7 @@ def get_instance():
 
     # gen instance
     instance = random.choice([
-        # tower.get_instance(),
+        tower.get_instance(),
         two_tower.get_instance()
     ])
 
