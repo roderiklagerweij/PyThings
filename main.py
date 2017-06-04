@@ -1,5 +1,6 @@
 from linearlayout import LinearLayout
 import skyline
+import asian_neon
 
 __author__ = 'Roderik'
 import pygame
@@ -7,6 +8,8 @@ import pygame.locals
 
 from screen import Screen
 from argument_parser import ArgumentParser
+
+pygame.init()
 
 screen = pygame.display.set_mode((640, 480))
 game_over = False
@@ -38,7 +41,8 @@ while not game_over:
         view_hierarchy = []
         view_hierarchy.append(top_layout)
 
-        top_layout.add_child(LinearLayout(gravity="center", childs=[skyline.get_instance()]))
+        # top_layout.add_child(LinearLayout(gravity="center", childs=[skyline.get_instance()]))
+        top_layout.add_child(LinearLayout(gravity="center", childs=[asian_neon.get_instance()]))
 
         for view in view_hierarchy:
             view.measure()
