@@ -188,6 +188,8 @@ class LinearLayout:
             self.offset_y -= (available_height - self.height_with_padding)
         elif self.gravity == 'right':
             self.offset_x -= (available_width - self.width_with_padding)
+        elif self.gravity == 'bottom':
+            self.offset_y += (available_height - self.height_with_padding)
         elif self.gravity == 'center_horizontal':
             self.offset_x += ((available_width/2) - (self.width_with_padding / 2))
         elif self.gravity == 'center_vertical':
@@ -201,7 +203,7 @@ class LinearLayout:
 
         for child in self.childs:
             if self.debug_id:
-                print (self.debug_id, draw_x)
+                print (self.debug_id, child.debug_id, draw_x)
 
             child.layout(draw_x, draw_y, self.width, self.height)
 

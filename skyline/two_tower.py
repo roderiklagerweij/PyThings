@@ -1,21 +1,20 @@
 __author__ = 'Roderik'
 
-from skyline import tower
+from skyline import tower, SkylineParams
 from linearlayout import LinearLayout
+
 
 def get_instance():
     return LinearLayout(
         layout_type="HORIZONTAL",
-        debug_id="two_tower",
-        # gravity="center",
         childs=[
             tower.get_instance(),
-            LinearLayout(
-                debug_id="middle_separator",
-                gravity="center_vertical",
-                width=15,
-                height=3,
-                color=(255, 0, 0)
+            LinearLayout(  # tower separator
+                gravity="bottom",
+                width=60,
+                height=40,
+                color=SkylineParams.wall_color,
+                intensity=SkylineParams.intensity
             ),
             tower.get_instance()
         ]

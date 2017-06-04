@@ -1,3 +1,4 @@
+from linearlayout import LinearLayout
 import skyline
 
 __author__ = 'Roderik'
@@ -37,7 +38,7 @@ while not game_over:
         view_hierarchy = []
         view_hierarchy.append(top_layout)
 
-        top_layout.add_child(skyline.get_instance())
+        top_layout.add_child(LinearLayout(gravity="center", childs=[skyline.get_instance()]))
 
         for view in view_hierarchy:
             view.measure()
