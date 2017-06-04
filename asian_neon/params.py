@@ -8,6 +8,9 @@ class AsianNeonParams:
     text = None
     text_color = None
     text_size = None
+    sub_text = None
+    sub_text_color = None
+    sub_text_size = None
     background_color = None
     border_color = None
 
@@ -24,10 +27,13 @@ class AsianNeonParams:
         ])
 
         AsianNeonParams.text = ''
-        for i in range(random.randint(1, 6)):
+        AsianNeonParams.sub_text = ''
+        for i in range(random.randint(1, 9)):
             AsianNeonParams.text += random.choice(string.ascii_letters)
+        for i in range(random.randint(1, 9)):
+            AsianNeonParams.sub_text += random.choice(string.ascii_letters)
 
-        AsianNeonParams.text_color = random.choice([
+        text_colors = [
             (244, 220, 138),
             (225, 210, 220),
             (235, 175, 128),
@@ -35,11 +41,15 @@ class AsianNeonParams:
             (56, 154, 98),
             (250, 107, 82),
             (246, 217, 21)
-        ])
+        ]
+        AsianNeonParams.text_color = random.choice(text_colors)
+        AsianNeonParams.sub_text_color = random.choice(text_colors)
 
         AsianNeonParams.text_size = random.choice([
             36, 48, 64, 72
         ])
+        AsianNeonParams.sub_text_size = int(AsianNeonParams.text_size * (random.random()*0.5 + 0.5))
+
 
         AsianNeonParams.background_color = random.choice([
             (8, 196, 22),
