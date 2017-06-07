@@ -1,6 +1,9 @@
+from drawers.horizontal_stripes import HorizontalStripesDrawer
+
 __author__ = 'Roderik'
 import string
 import random
+from drawers.vertical_stripes import VerticalStripesDrawer
 
 class AsianNeonParams:
 
@@ -13,6 +16,7 @@ class AsianNeonParams:
     sub_text_size = None
     background_color = None
     border_color = None
+    board_predrawer = None
 
     @staticmethod
     def init_params():
@@ -67,3 +71,11 @@ class AsianNeonParams:
             (252, 235, 108),
             (255, 255, 0)
         ])
+
+        if random.random() < 0.2:
+            if random.choice([True, False]):
+                AsianNeonParams.board_predrawer = HorizontalStripesDrawer(2, 15, (255, 0, 0))
+            else:
+                AsianNeonParams.board_predrawer = VerticalStripesDrawer(2, 15, (255, 0, 0))
+        else:
+            AsianNeonParams.board_predrawer = None

@@ -11,7 +11,7 @@ def get_instance():
     selection = random.randint(0, 2)
     if selection == 0:
         return get_inner_text_board()
-    elif selection == 1:
+    elif selection == 1:  # 1 border
         return LinearLayout(
             color=AsianNeonParams.background_color,
             padding=2,
@@ -24,7 +24,7 @@ def get_instance():
                               ])
             ]
         )
-    elif selection == 2:
+    elif selection == 2: # 2 borders
         return LinearLayout(
             color=AsianNeonParams.background_color,
             padding=2,
@@ -58,6 +58,7 @@ def get_inner_text_board():
     return LinearLayout(
         color=AsianNeonParams.background_color,
         padding=16,
+        predrawer=AsianNeonParams.board_predrawer,
         childs=[
             text.get_instance()
         ])

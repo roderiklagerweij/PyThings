@@ -27,6 +27,8 @@ class LinearLayout:
                  id=None,
                  debug_id=None,
                  intensity=1,
+                 predrawer=None,
+                 postdrawer=None,
                  visible=True):
         self.id = id
 
@@ -63,6 +65,8 @@ class LinearLayout:
         self.width_with_padding = 0
         self.height_with_padding = 0
         self.rotation = rotation
+        self.predrawer = predrawer
+        self.postdrawer = postdrawer
 
         if color:
             hsv = colorsys.rgb_to_hsv(color[0], color[1], color[2])
@@ -228,5 +232,11 @@ class LinearLayout:
                 self.height_with_padding
             ), 0)
 
+        if self.predrawer:
+            self.predrawer.draw(screen, self.offset_x, self.offset_y, self.width_with_padding, self.height_with_padding)
+
         for child in self.childs:
             child.draw(screen)
+
+        if self.postdrawer:
+            self.postdrawer.draw(screen, self.offset_x, self.offset_y, self.width_with_padding, self.height_with_padding)
