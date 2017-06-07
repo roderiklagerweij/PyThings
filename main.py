@@ -8,10 +8,12 @@ import pygame.locals
 
 from screen import Screen
 from argument_parser import ArgumentParser
+from exporter import export
 
 pygame.init()
-
-screen = pygame.display.set_mode((640, 480))
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 game_over = False
 
 view_hierarchy = []
@@ -33,6 +35,11 @@ def recurse_add_prog(layout, parent):
 
 new_instance = True
 
+export_mode = True
+export_counter = 0
+
+module = asian_neon
+
 while not game_over:
     if new_instance:
         screen.fill((0, 0, 0))
@@ -41,24 +48,30 @@ while not game_over:
         view_hierarchy = []
         view_hierarchy.append(top_layout)
 
-        # top_layout.add_child(LinearLayout(gravity="center", childs=[skyline.get_instance()]))
-        top_layout.add_child(LinearLayout(gravity="center", childs=[asian_neon.get_instance()]))
+        top_layout.add_child(LinearLayout(gravity="center", childs=[module.get_instance()]))
 
         for view in view_hierarchy:
             view.measure()
 
         for view in view_hierarchy:
-            view.post_measure(640, 480)
+            view.post_measure(SCREEN_WIDTH, SCREEN_HEIGHT)
 
         for view in view_hierarchy:
-            view.layout(0, 0, 640, 480)
+            view.layout(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
 
         for view in view_hierarchy:
             view.draw(screen)
-
-
+            
         pygame.display.flip()
         new_instance = False
+
+        if export_mode:
+            export_rect = top_layout.get_export_rect()
+            export(screen.subsurface(export_rect), module, export_counter)
+            export_counter += 1
+            new_instance = True
+            if export_counter == 50:
+                game_over = True
 
     for event in pygame.event.get():
         if event.type == pygame.locals.QUIT:
