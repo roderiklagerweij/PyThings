@@ -1,6 +1,7 @@
 from linearlayout import LinearLayout
 import skyline
 import asian_neon
+import books
 
 __author__ = 'Roderik'
 import pygame
@@ -35,10 +36,10 @@ def recurse_add_prog(layout, parent):
 
 new_instance = True
 
-export_mode = True
+export_mode = False
 export_counter = 0
 
-module = asian_neon
+module = books
 
 while not game_over:
     if new_instance:
@@ -61,7 +62,7 @@ while not game_over:
 
         for view in view_hierarchy:
             view.draw(screen)
-            
+
         pygame.display.flip()
         new_instance = False
 

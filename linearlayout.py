@@ -220,6 +220,7 @@ class LinearLayout:
         if not self.visible:
             return
 
+        # surface = pygame.Surface((self.width, self.height), pygame.SRCALPHA, 32)
 
         if self.debug_id:
             print ('draw', self.debug_id, self.offset_x, self.width, self.width_with_padding)
@@ -240,3 +241,5 @@ class LinearLayout:
 
         if self.postdrawer:
             self.postdrawer.draw(screen, self.offset_x, self.offset_y, self.width_with_padding, self.height_with_padding)
+
+        # screen.blit(surface, (self.offset_x, self.offset_y))

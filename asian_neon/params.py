@@ -52,7 +52,7 @@ class AsianNeonParams:
         AsianNeonParams.sub_text_color = random.choice(text_colors)
 
         AsianNeonParams.text_size = random.choice([
-            36, 48, 64, 72
+            16, 24, 36, 48
         ])
         AsianNeonParams.sub_text_size = int(AsianNeonParams.text_size * (random.random()*0.5 + 0.5))
 
