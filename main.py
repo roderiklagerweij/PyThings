@@ -1,7 +1,7 @@
 from linearlayout import LinearLayout
-import skyline
 import asian_neon
 import books
+import skyline
 
 __author__ = 'Roderik'
 import pygame
@@ -10,11 +10,11 @@ import pygame.locals
 from screen import Screen
 from argument_parser import ArgumentParser
 from exporter import export
+import settings
 
 pygame.init()
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
-screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
+screen = pygame.display.set_mode((settings.SCREEN_WIDTH, settings.SCREEN_HEIGHT))
 game_over = False
 
 view_hierarchy = []
@@ -39,7 +39,8 @@ new_instance = True
 export_mode = False
 export_counter = 0
 
-module = books
+module = skyline
+print (module.get_name())
 
 while not game_over:
     if new_instance:
@@ -49,16 +50,19 @@ while not game_over:
         view_hierarchy = []
         view_hierarchy.append(top_layout)
 
+        # ca.test1()
+        # ca.apply_constraint(None, None)
+
         top_layout.add_child(LinearLayout(gravity="center", childs=[module.get_instance()]))
 
         for view in view_hierarchy:
             view.measure()
 
         for view in view_hierarchy:
-            view.post_measure(SCREEN_WIDTH, SCREEN_HEIGHT)
+            view.post_measure(settings.SCREEN_WIDTH, settings.SCREEN_HEIGHT)
 
         for view in view_hierarchy:
-            view.layout(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
+            view.layout(0, 0, settings.SCREEN_WIDTH, settings.SCREEN_HEIGHT)
 
         for view in view_hierarchy:
             view.draw(screen)

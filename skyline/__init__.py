@@ -1,6 +1,5 @@
+# __author__ = 'Roderik'
 import constraint_applyer
-
-__author__ = 'Roderik'
 from skyline import tower
 from skyline.params import SkylineParams
 from skyline import tower_section
@@ -19,7 +18,6 @@ def get_instance():
         two_tower.get_instance()
     ])
 
-
     # apply constraints
     constraint_applyer.apply_constraint(instance, [
         roof.TOWER_ROOF,
@@ -28,3 +26,9 @@ def get_instance():
     ])
 
     return instance
+
+def get_name():
+    return 'skyline'
+
+def get_version():
+    return '2'

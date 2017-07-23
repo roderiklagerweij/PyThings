@@ -118,15 +118,14 @@ class LinearLayout:
         self.width_with_padding = self.width + self.padding_left + self.padding_right
         self.height_with_padding = self.height + self.padding_top + self.padding_bottom
 
+
+
         if self.debug_id:
             print ('measure for', self.debug_id + ':\n\twidth:', self.width, '\n\twidth with padding:', self.width_with_padding, '\n\theight:',self.height, '\n\theight with padding:',self.height_with_padding)
 
     def post_measure(self, available_fill_width, available_fill_height):
         if not self.visible:
             return
-
-        if self.debug_id == 'light_stroke':
-            print ('***', self.fill_width, available_fill_width, self.padding_left, self.padding_right)
 
         if self.fill_width:
             self.width = available_fill_width - (self.padding_left + self.padding_right)
@@ -220,18 +219,24 @@ class LinearLayout:
         if not self.visible:
             return
 
-        # surface = pygame.Surface((self.width, self.height), pygame.SRCALPHA, 32)
-
         if self.debug_id:
             print ('draw', self.debug_id, self.offset_x, self.width, self.width_with_padding)
 
         if self.color:
-            pygame.draw.rect(screen, self.color, (
-                self.offset_x,
-                self.offset_y,
+            surface = pygame.Surface((self.width_with_padding, self.height_with_padding), pygame.SRCALPHA, 32)
+
+            pygame.draw.rect(surface, self.color, (
+                0,
+                0,
                 self.width_with_padding,
                 self.height_with_padding
             ), 0)
+
+            # if self.rotation is not 0:
+            #     surface = self.rot_center(surface, self.rotation)
+                # surface = pygame.transform.rotate(surface, self.rotation)
+
+            screen.blit(surface, (self.offset_x, self.offset_y))
 
         if self.predrawer:
             self.predrawer.draw(screen, self.offset_x, self.offset_y, self.width_with_padding, self.height_with_padding)
@@ -242,4 +247,10 @@ class LinearLayout:
         if self.postdrawer:
             self.postdrawer.draw(screen, self.offset_x, self.offset_y, self.width_with_padding, self.height_with_padding)
 
-        # screen.blit(surface, (self.offset_x, self.offset_y))
+
+    # def rot_center(self, image, angle):
+    #     """rotate a Surface, maintaining position."""
+    #     loc = image.get_rect().center  #rot_image is not defined
+    #     rot_sprite = pygame.transform.rotate(image, angle)
+    #     rot_sprite.get_rect().center = loc
+    #     return rot_sprite

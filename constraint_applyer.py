@@ -1,4 +1,4 @@
-import main
+import settings
 import view_finder
 
 __author__ = 'Roderik'
@@ -13,7 +13,7 @@ def apply_constraint(parent, id_list):
     for i in range(10):
         # print ('iteration')
         parent.measure()
-        parent.post_measure(main.SCREEN_WIDTH, main.SCREEN_HEIGHT)
+        parent.post_measure(settings.SCREEN_WIDTH, settings.SCREEN_HEIGHT)
 
         max_width = 0
         for view in views:
