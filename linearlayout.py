@@ -240,18 +240,15 @@ class LinearLayout:
             # surface = pygame.transform.rotate(surface, self.rotation)
 
 
-        # if self.predrawer:
-        #     self.predrawer.draw(surface, self.offset_x, self.offset_y, self.width_with_padding, self.height_with_padding)
+        if self.predrawer:
+            self.predrawer.draw(surface, self.offset_x, self.offset_y, self.width_with_padding, self.height_with_padding)
 
         for child in self.childs:
-            print (child)
             childsurface = child.draw(surface)
             surface.blit(childsurface, (child.offset_x, child.offset_y))
 
-        return surface
-        # if self.postdrawer:
-        #     self.postdrawer.draw(surface, self.offset_x, self.offset_y, self.width_with_padding, self.height_with_padding)
-
+        if self.postdrawer:
+            self.postdrawer.draw(surface, self.offset_x, self.offset_y, self.width_with_padding, self.height_with_padding)
 
         return surface
 

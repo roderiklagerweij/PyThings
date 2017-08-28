@@ -40,7 +40,7 @@ new_instance = True
 export_mode = False
 export_counter = 0
 
-module = skyline
+module = asian_neon
 
 while not game_over:
     if new_instance:

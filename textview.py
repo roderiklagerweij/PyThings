@@ -24,4 +24,4 @@ class TextView(LinearLayout):
         if self.rotation is not 0:
             print (self.rotation)
             surface = pygame.transform.rotate(surface, self.rotation)
-        screen.blit(surface, (self.offset_x, self.offset_y))
+        return surface
