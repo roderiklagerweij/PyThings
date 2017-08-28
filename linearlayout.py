@@ -87,6 +87,7 @@ class LinearLayout:
         if layout_type is None and len(self.childs) > 1:
             raise ValueError("Layout type cannot be none when there is more than one child!")
 
+    # calculate own width and height
     def measure(self):
         if not self.visible:
             return
@@ -108,21 +109,20 @@ class LinearLayout:
                 width = child.width_with_padding
                 height = child.height_with_padding
 
-        # assign to self
-        # if provided dimension is more than calculated, keep the provided
+        # if provided dimension is bigger than calculated dimension, keep the provided
         if self.width < width:
             self.width = width
         if self.height < height:
             self.height = height
 
+        # add padding
         self.width_with_padding = self.width + self.padding_left + self.padding_right
         self.height_with_padding = self.height + self.padding_top + self.padding_bottom
-
-
 
         if self.debug_id:
             print ('measure for', self.debug_id + ':\n\twidth:', self.width, '\n\twidth with padding:', self.width_with_padding, '\n\theight:',self.height, '\n\theight with padding:',self.height_with_padding)
 
+    #
     def post_measure(self, available_fill_width, available_fill_height):
         if not self.visible:
             return
@@ -170,16 +170,19 @@ class LinearLayout:
                     self.width,
                     float(self.height - used_height) / float(height_weight_sum))
 
-        else:  # should only be one child
+        else:  # no orientation supplied
+            if len(self.childs) > 1:
+                raise ValueError("Having more than one child does not make sense when not having an orientation!!")
+
             for child in self.childs:
                 child.post_measure(self.width, self.height)
 
     def layout(self, offset_x, offset_y, available_width, available_height):
         if not self.visible:
             return
-
-        if self.debug_id:
-            print ('layout', self.debug_id, offset_x, offset_y, available_width, available_height, self.width, self.height)
+        print ('layout****', self.debug_id, offset_x, offset_y, available_width, available_height)
+        # if self.debug_id:
+        #     print ('layout****', self.debug_id, offset_x, offset_y, available_width, available_height, self.width, self.height)
 
         self.offset_x = offset_x
         self.offset_y = offset_y
@@ -198,8 +201,11 @@ class LinearLayout:
             self.offset_x += ((available_width/2) - (self.width_with_padding / 2))
             self.offset_y += ((available_height/2) - (self.height_with_padding / 2))
 
-        draw_x = self.offset_x + self.padding_left
-        draw_y = self.offset_y + self.padding_top
+        # draw_x = self.offset_x + self.padding_left
+        # draw_y = self.offset_y + self.padding_top
+        draw_x = self.padding_left
+        draw_y = self.padding_top
+
 
         for child in self.childs:
             if self.debug_id:
@@ -219,11 +225,13 @@ class LinearLayout:
         if not self.visible:
             return
 
+        surface = pygame.Surface((self.width_with_padding, self.height_with_padding), pygame.SRCALPHA, 32)
+
         if self.debug_id:
             print ('draw', self.debug_id, self.offset_x, self.width, self.width_with_padding)
 
         if self.color:
-            surface = pygame.Surface((self.width_with_padding, self.height_with_padding), pygame.SRCALPHA, 32)
+            print ('**', self.width_with_padding, self.height_with_padding)
 
             pygame.draw.rect(surface, self.color, (
                 0,
@@ -234,19 +242,25 @@ class LinearLayout:
 
             # if self.rotation is not 0:
             #     surface = self.rot_center(surface, self.rotation)
-                # surface = pygame.transform.rotate(surface, self.rotation)
+            # surface = pygame.transform.rotate(surface, self.rotation)
 
-            screen.blit(surface, (self.offset_x, self.offset_y))
 
-        if self.predrawer:
-            self.predrawer.draw(screen, self.offset_x, self.offset_y, self.width_with_padding, self.height_with_padding)
+        # if self.predrawer:
+        #     self.predrawer.draw(surface, self.offset_x, self.offset_y, self.width_with_padding, self.height_with_padding)
 
         for child in self.childs:
-            child.draw(screen)
+            childsurface = child.draw(surface)
+            surface.blit(childsurface, (child.offset_x, child.offset_y))
 
-        if self.postdrawer:
-            self.postdrawer.draw(screen, self.offset_x, self.offset_y, self.width_with_padding, self.height_with_padding)
+        # if self.postdrawer:
+        #     self.postdrawer.draw(surface, self.offset_x, self.offset_y, self.width_with_padding, self.height_with_padding)
+        # print (self.offset_x, self.offset_y)
 
+        # screen.blit(surface, (self.offset_x, self.offset_y))
+
+        # if self.color:
+        #     pygame.draw.rect(surface, self.color, (0, 0, 10, 10), 0)
+        return surface
 
     # def rot_center(self, image, angle):
     #     """rotate a Surface, maintaining position."""

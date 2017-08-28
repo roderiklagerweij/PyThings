@@ -2,6 +2,7 @@ from linearlayout import LinearLayout
 import asian_neon
 import books
 import skyline
+import circletest
 
 __author__ = 'Roderik'
 import pygame
@@ -39,21 +40,21 @@ new_instance = True
 export_mode = False
 export_counter = 0
 
-module = skyline
-print (module.get_name())
+module = circletest
 
 while not game_over:
     if new_instance:
         screen.fill((0, 0, 0))
 
-        top_layout = Screen()
+        top_layout = Screen(settings.SCREEN_WIDTH, settings.SCREEN_HEIGHT)
         view_hierarchy = []
         view_hierarchy.append(top_layout)
 
         # ca.test1()
         # ca.apply_constraint(None, None)
 
-        top_layout.add_child(LinearLayout(gravity="center", childs=[module.get_instance()]))
+        # top_layout.add_child(LinearLayout(gravity="center", childs=[module.get_instance()]))
+        top_layout.add_child(LinearLayout(gravity="center", width=200, height=200, color=(255, 0, 0), childs=[module.get_instance()]))
 
         for view in view_hierarchy:
             view.measure()

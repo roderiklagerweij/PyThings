@@ -5,7 +5,6 @@ from skyline.params import SkylineParams
 from skyline import tower_section
 from skyline import tower_middlepart
 from skyline import roof
-import random
 
 TOWER_SECTION = "tower_section"
 
