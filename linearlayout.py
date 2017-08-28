@@ -180,9 +180,9 @@ class LinearLayout:
     def layout(self, offset_x, offset_y, available_width, available_height):
         if not self.visible:
             return
-        print ('layout****', self.debug_id, offset_x, offset_y, available_width, available_height)
-        # if self.debug_id:
-        #     print ('layout****', self.debug_id, offset_x, offset_y, available_width, available_height, self.width, self.height)
+
+        if self.debug_id:
+            print ('layout****', self.debug_id, offset_x, offset_y, available_width, available_height, self.width, self.height)
 
         self.offset_x = offset_x
         self.offset_y = offset_y
@@ -201,11 +201,8 @@ class LinearLayout:
             self.offset_x += ((available_width/2) - (self.width_with_padding / 2))
             self.offset_y += ((available_height/2) - (self.height_with_padding / 2))
 
-        # draw_x = self.offset_x + self.padding_left
-        # draw_y = self.offset_y + self.padding_top
         draw_x = self.padding_left
         draw_y = self.padding_top
-
 
         for child in self.childs:
             if self.debug_id:
@@ -222,17 +219,15 @@ class LinearLayout:
         self.childs.append(child)
 
     def draw(self, screen):
-        if not self.visible:
-            return
-
         surface = pygame.Surface((self.width_with_padding, self.height_with_padding), pygame.SRCALPHA, 32)
+
+        if not self.visible:
+            surface
 
         if self.debug_id:
             print ('draw', self.debug_id, self.offset_x, self.width, self.width_with_padding)
 
         if self.color:
-            print ('**', self.width_with_padding, self.height_with_padding)
-
             pygame.draw.rect(surface, self.color, (
                 0,
                 0,
@@ -249,17 +244,15 @@ class LinearLayout:
         #     self.predrawer.draw(surface, self.offset_x, self.offset_y, self.width_with_padding, self.height_with_padding)
 
         for child in self.childs:
+            print (child)
             childsurface = child.draw(surface)
             surface.blit(childsurface, (child.offset_x, child.offset_y))
 
+        return surface
         # if self.postdrawer:
         #     self.postdrawer.draw(surface, self.offset_x, self.offset_y, self.width_with_padding, self.height_with_padding)
-        # print (self.offset_x, self.offset_y)
 
-        # screen.blit(surface, (self.offset_x, self.offset_y))
 
-        # if self.color:
-        #     pygame.draw.rect(surface, self.color, (0, 0, 10, 10), 0)
         return surface
 
     # def rot_center(self, image, angle):

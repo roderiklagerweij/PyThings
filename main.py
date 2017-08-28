@@ -40,7 +40,7 @@ new_instance = True
 export_mode = False
 export_counter = 0
 
-module = circletest
+module = skyline
 
 while not game_over:
     if new_instance:
@@ -50,11 +50,7 @@ while not game_over:
         view_hierarchy = []
         view_hierarchy.append(top_layout)
 
-        # ca.test1()
-        # ca.apply_constraint(None, None)
-
-        # top_layout.add_child(LinearLayout(gravity="center", childs=[module.get_instance()]))
-        top_layout.add_child(LinearLayout(gravity="center", width=200, height=200, color=(255, 0, 0), childs=[module.get_instance()]))
+        top_layout.add_child(LinearLayout(gravity="center", childs=[module.get_instance()]))
 
         for view in view_hierarchy:
             view.measure()

@@ -15,4 +15,5 @@ class Circle(LinearLayout):
         surface = Surface((self.width, self.height))
         # pygame.draw.polygon(surface, self.color, [(0, 0), (self.width, 0), (self.width/2, self.height)], 0)
         pygame.draw.circle(surface, self.color, [self.radius, self.radius], round(self.radius))
-        screen.blit(surface, (self.offset_x, self.offset_y))
+        return surface
+        # screen.blit(surface, (self.offset_x, self.offset_y))
