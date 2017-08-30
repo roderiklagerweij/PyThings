@@ -2,6 +2,7 @@ __author__ = 'Roderik'
 import pygame
 from pygame import Color
 import colorsys
+from math import *
 
 
 class LinearLayout:
@@ -64,6 +65,8 @@ class LinearLayout:
         self.height = height
         self.width_with_padding = 0
         self.height_with_padding = 0
+        self.actual_width_with_padding = 0
+        self.actual_height_with_padding = 0
         self.rotation = rotation
         self.predrawer = predrawer
         self.postdrawer = postdrawer
@@ -98,16 +101,16 @@ class LinearLayout:
         for child in self.childs:
             child.measure()
             if self.layout_type == LinearLayout.HORIZONTAL:
-                width += child.width_with_padding
-                if height < child.height_with_padding:
-                    height = child.height_with_padding
+                width += child.actual_width_with_padding
+                if height < child.actual_height_with_padding:
+                    height = child.actual_height_with_padding
             elif self.layout_type == LinearLayout.VERTICAL:
-                height += child.height_with_padding
-                if width < child.width_with_padding:
-                    width = child.width_with_padding
+                height += child.actual_height_with_padding
+                if width < child.actual_width_with_padding:
+                    width = child.actual_width_with_padding
             else:  # should only be one child
-                width = child.width_with_padding
-                height = child.height_with_padding
+                width = child.actual_width_with_padding
+                height = child.actual_height_with_padding
 
         # if provided dimension is bigger than calculated dimension, keep the provided
         if self.width < width:
@@ -118,6 +121,11 @@ class LinearLayout:
         # add padding
         self.width_with_padding = self.width + self.padding_left + self.padding_right
         self.height_with_padding = self.height + self.padding_top + self.padding_bottom
+
+        # adjust width/height to rotation
+        rotated_point = self.rotatePoint(self.rotation, (self.width_with_padding, self.height_with_padding), (0, 0))
+        self.actual_width_with_padding = abs(rotated_point[0])
+        self.actual_height_with_padding = abs(rotated_point[1])
 
         if self.debug_id:
             print ('measure for', self.debug_id + ':\n\twidth:', self.width, '\n\twidth with padding:', self.width_with_padding, '\n\theight:',self.height, '\n\theight with padding:',self.height_with_padding)
@@ -141,7 +149,7 @@ class LinearLayout:
                 if child.fill_width:
                     width_weight_sum += 1
                 else:
-                    used_width += child.width_with_padding
+                    used_width += child.actual_width_with_padding
 
             width_weight_sum = max(width_weight_sum, 1)
 
@@ -158,7 +166,7 @@ class LinearLayout:
                 if child.fill_height:
                     height_weight_sum += 1
                 else:
-                    used_height += child.height_with_padding
+                    used_height += child.actual_height_with_padding
 
             height_weight_sum = max(height_weight_sum, 1)
 
@@ -211,9 +219,9 @@ class LinearLayout:
             child.layout(draw_x, draw_y, self.width, self.height)
 
             if self.layout_type == LinearLayout.HORIZONTAL:
-                draw_x += child.width_with_padding
+                draw_x += child.actual_width_with_padding
             elif self.layout_type == LinearLayout.VERTICAL:
-                draw_y += child.height_with_padding
+                draw_y += child.actual_height_with_padding
 
     def add_child(self, child):
         self.childs.append(child)
@@ -235,11 +243,6 @@ class LinearLayout:
                 self.height_with_padding
             ), 0)
 
-            # if self.rotation is not 0:
-            #     surface = self.rot_center(surface, self.rotation)
-            # surface = pygame.transform.rotate(surface, self.rotation)
-
-
         if self.predrawer:
             self.predrawer.draw(surface, self.offset_x, self.offset_y, self.width_with_padding, self.height_with_padding)
 
@@ -250,11 +253,14 @@ class LinearLayout:
         if self.postdrawer:
             self.postdrawer.draw(surface, self.offset_x, self.offset_y, self.width_with_padding, self.height_with_padding)
 
+        if self.rotation is not 0:
+            # surface = self.rot_center(surface, self.rotation)
+            surface = pygame.transform.rotate(surface, self.rotation)
+
         return surface
 
-    # def rot_center(self, image, angle):
-    #     """rotate a Surface, maintaining position."""
-    #     loc = image.get_rect().center  #rot_image is not defined
-    #     rot_sprite = pygame.transform.rotate(image, angle)
-    #     rot_sprite.get_rect().center = loc
-    #     return rot_sprite
+    def rotatePoint(self, angle, point, origin):
+        sinT = sin(radians(angle))
+        cosT = cos(radians(angle))
+        return (origin[0] + (cosT * (point[0] - origin[0]) - sinT * (point[1] - origin[1])),
+                      origin[1] + (sinT * (point[0] - origin[0]) + cosT * (point[1] - origin[1])))

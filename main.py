@@ -30,17 +30,13 @@ arg_parser = ArgumentParser()
 def recurse_add_prog(layout, parent):
     for item in layout:
         parent.add_child(item)
-        # if type(item) is list:
-        #     recurse_add_prog(item, parent.childs[-1])
-        # else:
-        #     parent.add_child(item)
 
 new_instance = True
 
 export_mode = False
 export_counter = 0
 
-module = asian_neon
+module = books
 
 while not game_over:
     if new_instance:
@@ -86,4 +82,4 @@ while not game_over:
                 new_instance = True
                 print (pressed_key)
 
-    pygame.time.delay(100)
+    # pygame.time.delay(100)
