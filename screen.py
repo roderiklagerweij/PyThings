@@ -37,7 +37,7 @@ class Screen:
         surface = pygame.Surface((self.width, self.height), pygame.SRCALPHA, 32)
 
         for child in self.childs:
-            childsurface = child.draw(surface)
+            childsurface = child.draw()
             surface.blit(childsurface, (child.offset_x, child.offset_y))
 
         screen.blit(surface, (0, 0))

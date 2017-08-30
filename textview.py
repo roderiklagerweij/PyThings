@@ -16,7 +16,7 @@ class TextView(LinearLayout):
         w, h = self.font.size(text)
         super().__init__(width=w, height=h, *args, **kwargs)
 
-    def draw(self, screen):
+    def draw(self):
         surface = Surface((self.width, self.height), pygame.SRCALPHA, 32)
         surface.convert_alpha()
         text = self.font.render(self.text, True, self.text_color)

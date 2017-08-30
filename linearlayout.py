@@ -218,7 +218,7 @@ class LinearLayout:
     def add_child(self, child):
         self.childs.append(child)
 
-    def draw(self, screen):
+    def draw(self):
         surface = pygame.Surface((self.width_with_padding, self.height_with_padding), pygame.SRCALPHA, 32)
 
         if not self.visible:
@@ -244,7 +244,7 @@ class LinearLayout:
             self.predrawer.draw(surface, self.offset_x, self.offset_y, self.width_with_padding, self.height_with_padding)
 
         for child in self.childs:
-            childsurface = child.draw(surface)
+            childsurface = child.draw()
             surface.blit(childsurface, (child.offset_x, child.offset_y))
 
         if self.postdrawer:

@@ -11,7 +11,7 @@ class Circle(LinearLayout):
         super().__init__("HORIZONTAL", width=radius*2, height=radius*2, *args, **kwargs)
         self.radius = radius
 
-    def draw(self, screen):
+    def draw(self):
         surface = Surface((self.width, self.height))
         # pygame.draw.polygon(surface, self.color, [(0, 0), (self.width, 0), (self.width/2, self.height)], 0)
         pygame.draw.circle(surface, self.color, [self.radius, self.radius], round(self.radius))
