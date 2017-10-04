@@ -1,4 +1,4 @@
-from books import book
+from books import bookshelf
 from books.params import BookParams
 
 __author__ = 'Roderik'
@@ -8,7 +8,7 @@ def get_instance():
 
     BookParams.init_params()
 
-    return book.get_instance()
+    return bookshelf.get_instance()
 
 
 def get_name():
