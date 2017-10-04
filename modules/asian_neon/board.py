@@ -1,7 +1,11 @@
-from asian_neon.params import AsianNeonParams
+import random
+
+from modules.asian_neon import text
+
+from modules.asian_neon.params import AsianNeonParams
 from linearlayout import LinearLayout
 from asian_neon import text
-import random
+
 
 __author__ = 'Roderik'
 

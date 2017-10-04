@@ -1,5 +1,5 @@
-from asian_neon import board
-from asian_neon.params import AsianNeonParams
+from modules.asian_neon import board
+from modules.asian_neon.params import AsianNeonParams
 
 __author__ = 'Roderik'
 

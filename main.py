@@ -1,8 +1,7 @@
 from linearlayout import LinearLayout
-import asian_neon
-import books
-import skyline
-import circletest
+from modules import books
+from modules import skyline
+from modules import dutch_houses
 
 __author__ = 'Roderik'
 import pygame

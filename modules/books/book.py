@@ -1,4 +1,4 @@
-from books.params import BookParams
+from modules.books.params import BookParams
 from linearlayout import LinearLayout
 from textview import TextView
 

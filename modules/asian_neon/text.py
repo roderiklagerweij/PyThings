@@ -2,7 +2,7 @@ from linearlayout import LinearLayout
 
 __author__ = 'Roderik'
 
-from asian_neon.params import AsianNeonParams
+from modules.asian_neon.params import AsianNeonParams
 from textview import TextView
 import random
 

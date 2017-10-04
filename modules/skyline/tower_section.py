@@ -1,4 +1,4 @@
-from skyline.params import SkylineParams
+from modules.skyline.params import SkylineParams
 
 __author__ = 'Roderik'
 

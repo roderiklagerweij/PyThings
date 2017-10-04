@@ -1,9 +1,8 @@
 __author__ = 'Roderik'
 from linearlayout import LinearLayout
 from triangle import Triangle
-from pygame import Color
-from dutch_houses.house_params import HouseParams
-from dutch_houses import window
+from modules.dutch_houses.house_params import HouseParams
+from modules.dutch_houses import window
 
 def get_instance():
 

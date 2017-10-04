@@ -1,9 +1,11 @@
 __author__ = 'Roderik'
 
 import random
+
 from circle import Circle
 from linearlayout import LinearLayout
-from skyline.params import SkylineParams
+from modules.skyline.params import SkylineParams
+
 
 TOWER_MIDDLE_PART = "tower_middle_part"
 
