@@ -123,9 +123,17 @@ class LinearLayout:
         self.height_with_padding = self.height + self.padding_top + self.padding_bottom
 
         # adjust width/height to rotation
-        rotated_point = self.rotatePoint(self.rotation, (self.width_with_padding, self.height_with_padding), (0, 0))
-        self.actual_width_with_padding = abs(rotated_point[0])
-        self.actual_height_with_padding = abs(rotated_point[1])
+        topLeft = self.rotatePoint(self.rotation, (0, self.height_with_padding), (0, 0))
+        topRight = self.rotatePoint(self.rotation, (self.width_with_padding, self.height_with_padding), (0, 0))
+        bottomLeft = self.rotatePoint(self.rotation, (0, 0), (0, 0))
+        bottomRight = self.rotatePoint(self.rotation, (self.width_with_padding, 0), (0, 0))
+        mostLeft = min(topLeft[0], topRight[0], bottomLeft[0], bottomRight[0])
+        mostRight = max(topLeft[0], topRight[0], bottomLeft[0], bottomRight[0])
+        mostBottom = min(topLeft[1], topRight[1], bottomLeft[1], bottomRight[1])
+        mostTop = max(topLeft[1], topRight[1], bottomLeft[1], bottomRight[1])
+
+        self.actual_width_with_padding = abs(mostRight - mostLeft)
+        self.actual_height_with_padding = abs(mostTop - mostBottom)
 
         if self.debug_id:
             print ('measure for', self.debug_id + ':\n\twidth:', self.width, '\n\twidth with padding:', self.width_with_padding, '\n\theight:',self.height, '\n\theight with padding:',self.height_with_padding)

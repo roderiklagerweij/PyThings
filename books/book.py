@@ -14,7 +14,7 @@ def get_instance():
             LinearLayout(
                 color=BookParams.color,
                 padding=10,
-                rotation=270,
+                rotation=270 + BookParams.angle,
                 childs=[
                     TextView(BookParams.text, BookParams.title_color, "DFKTL1B.ttf", 16)])
         ])

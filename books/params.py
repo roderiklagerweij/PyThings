@@ -9,15 +9,12 @@ class BookParams:
     color = None
     title_color = None
     text = None
+    angle = 0
 
     @staticmethod
     def init_params():
         BookParams.width = random.randint(20, 60)
         BookParams.height = random.randint(120, 300)
-
-        # BookParams.color = (random.randint(0, 255),
-        #                     random.randint(0, 255),
-        #                     random.randint(0, 255))
 
         colors = [
             (87, 86, 103),
@@ -43,3 +40,7 @@ class BookParams:
             text += random.choice(string.ascii_letters)
 
         BookParams.text = text
+
+        BookParams.angle = 0
+        if random.randint(0, 10) == 0:
+            BookParams.angle = random.randint(0, 10) - 5
