@@ -2,27 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4f97288-0ac1-46c9-8ad5-01905714a664" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/books/bookshelves.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/books/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/books/book.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/books/bookshelf.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/books/params.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dutch_houses/house.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dutch_houses/house_params.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dutch_houses/window.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/skyline/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/skyline/params.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/skyline/roof.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/skyline/tower.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/skyline/tower_middlepart.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/skyline/tower_section.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/skyline/two_tower.py" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/asian_neon/__init__.py" afterPath="$PROJECT_DIR$/modules/asian_neon/__init__.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/asian_neon/board.py" afterPath="$PROJECT_DIR$/modules/asian_neon/board.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/asian_neon/params.py" afterPath="$PROJECT_DIR$/modules/asian_neon/params.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/asian_neon/text.py" afterPath="$PROJECT_DIR$/modules/asian_neon/text.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dutch_houses/__init__.py" afterPath="$PROJECT_DIR$/modules/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/colorutil.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/books/__init__.py" afterPath="$PROJECT_DIR$/modules/books/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/books/bookshelf.py" afterPath="$PROJECT_DIR$/modules/books/bookshelf.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/linearlayout.py" afterPath="$PROJECT_DIR$/linearlayout.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/books/params.py" afterPath="$PROJECT_DIR$/modules/books/params.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ObjectGenerator.iws" />
@@ -59,11 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="linearlayout.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="linearlayout.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/linearlayout.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.23002422" vertical-offset="2095" max-vertical-offset="4200">
-              <caret line="146" column="17" selection-start-line="146" selection-start-column="17" selection-end-line="146" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="3817" max-vertical-offset="4230">
+              <caret line="150" column="60" selection-start-line="150" selection-start-column="60" selection-end-line="150" selection-end-column="60" />
               <folding>
                 <element signature="e#23#36#0" expanded="true" />
               </folding>
@@ -96,8 +81,8 @@
       <file leaf-file-name="bookshelf.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/books/bookshelf.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
-              <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -110,16 +95,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="570">
               <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="house_params.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/dutch_houses/house_params.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
-              <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -149,13 +124,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="params.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="params.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/modules/books/params.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="352" max-vertical-offset="765">
-              <caret line="45" column="56" selection-start-line="45" selection-start-column="56" selection-end-line="45" selection-end-column="56" />
+            <state vertical-scroll-proportion="0.7094431" vertical-offset="322" max-vertical-offset="870">
+              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="colorutil.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/util/colorutil.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
+              <caret line="14" column="59" selection-start-line="14" selection-start-column="59" selection-end-line="14" selection-end-column="59" />
+              <folding>
+                <element signature="e#24#37#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -169,8 +156,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/house.layout" />
-        <option value="$PROJECT_DIR$/house.py" />
         <option value="$PROJECT_DIR$/dutch_houses/util.py" />
         <option value="$PROJECT_DIR$/dutch_houses/house_params.py" />
         <option value="$PROJECT_DIR$/view.py" />
@@ -214,12 +199,14 @@
         <option value="$PROJECT_DIR$/testrotate.py" />
         <option value="$PROJECT_DIR$/books/book.py" />
         <option value="$PROJECT_DIR$/books/params.py" />
-        <option value="$PROJECT_DIR$/modules/books/__init__.py" />
         <option value="$PROJECT_DIR$/modules/books/bookshelves.py" />
-        <option value="$PROJECT_DIR$/modules/books/bookshelf.py" />
         <option value="$PROJECT_DIR$/modules/skyline/__init__.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/linearlayout.py" />
+        <option value="$PROJECT_DIR$/modules/books/__init__.py" />
+        <option value="$PROJECT_DIR$/modules/books/bookshelf.py" />
+        <option value="$PROJECT_DIR$/util/colorutil.py" />
+        <option value="$PROJECT_DIR$/modules/books/params.py" />
       </list>
     </option>
   </component>
@@ -267,6 +254,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ObjectGenerator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ObjectGenerator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ObjectGenerator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -947,42 +948,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/books/params.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="352" max-vertical-offset="765">
-          <caret line="45" column="56" selection-start-line="45" selection-start-column="56" selection-end-line="45" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/books/book.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
           <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/books/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/books/bookshelf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
-          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1013,6 +984,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/linearlayout.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3817" max-vertical-offset="4230">
+          <caret line="150" column="60" selection-start-line="150" selection-start-column="60" selection-end-line="150" selection-end-column="60" />
+          <folding>
+            <element signature="e#23#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/books/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/modules/books/bookshelves.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="300">
@@ -1023,12 +1014,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/linearlayout.py">
+    <entry file="file://$PROJECT_DIR$/util/colorutil.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23002422" vertical-offset="2095" max-vertical-offset="4200">
-          <caret line="146" column="17" selection-start-line="146" selection-start-column="17" selection-end-line="146" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
+          <caret line="14" column="59" selection-start-line="14" selection-start-column="59" selection-end-line="14" selection-end-column="59" />
           <folding>
-            <element signature="e#23#36#0" expanded="true" />
+            <element signature="e#24#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/books/bookshelf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/books/params.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7094431" vertical-offset="322" max-vertical-offset="870">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>

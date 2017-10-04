@@ -8,8 +8,8 @@ __author__ = 'Roderik'
 def get_instance():
 
     BookParams.init_params()
-    return bookshelf.get_instance()
-    # return bookshelves.get_instance()
+
+    return bookshelves.get_instance()
 
 
 def get_name():

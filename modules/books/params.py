@@ -1,6 +1,8 @@
 import string
 import random
 import colorsys
+from util import colorutil
+
 
 class BookParams:
 
@@ -32,8 +34,13 @@ class BookParams:
                             random.randint(0, 255),
                             random.randint(0, 255))
 
-        BookParams.title_color = colorsys.rgb_to_hsv(BookParams.title_color[0], BookParams.title_color[1], BookParams.title_color[2])
-        BookParams.title_color = colorsys.hsv_to_rgb(BookParams.title_color[0], BookParams.title_color[1], BookParams.title_color[2]*0.3)
+        # vary color a bit
+        BookParams.color = colorutil.vary_color(BookParams.color, 20)
+
+        # darken color a bit
+        BookParams.color = colorutil.darken(BookParams.color, 1-(random.random()))
+
+        BookParams.title_color = colorutil.darken(BookParams.title_color, 0.3)
 
         text = ''
         for i in range(random.randint(0, 5) + 8):

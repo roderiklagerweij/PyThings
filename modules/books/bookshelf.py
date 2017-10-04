@@ -10,7 +10,8 @@ def get_instance():
                             LinearLayout(layout_type="HORIZONTAL",
                                          childs=get_books()),
                             LinearLayout(height=10, width=10, fill_width=True,
-                                         color=(255, 0, 0))
+                                         color=(133, 96, 73)),
+                            LinearLayout(height=15)
                         ])
 
 
