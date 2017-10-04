@@ -6,17 +6,16 @@ from util import colorutil
 
 class BookParams:
 
-    width = 0
-    height = 0
+    padding = 0
     color = None
     title_color = None
+    title_size = 16
     text = None
     angle = 0
 
     @staticmethod
     def init_params():
-        BookParams.width = random.randint(20, 60)
-        BookParams.height = random.randint(120, 300)
+        BookParams.padding = random.randint(5, 13)
 
         colors = [
             (87, 86, 103),
@@ -38,9 +37,10 @@ class BookParams:
         BookParams.color = colorutil.vary_color(BookParams.color, 20)
 
         # darken color a bit
-        BookParams.color = colorutil.darken(BookParams.color, 1-(random.random()))
+        BookParams.color = colorutil.darken(BookParams.color, 1.1-(random.random()))
 
         BookParams.title_color = colorutil.darken(BookParams.title_color, 0.3)
+        BookParams.title_size = random.randint(12,18)
 
         text = ''
         for i in range(random.randint(0, 5) + 8):

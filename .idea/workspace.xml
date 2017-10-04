@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4f97288-0ac1-46c9-8ad5-01905714a664" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/colorutil.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/books/__init__.py" afterPath="$PROJECT_DIR$/modules/books/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/books/bookshelf.py" afterPath="$PROJECT_DIR$/modules/books/bookshelf.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/linearlayout.py" afterPath="$PROJECT_DIR$/linearlayout.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/books/book.py" afterPath="$PROJECT_DIR$/modules/books/book.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/books/params.py" afterPath="$PROJECT_DIR$/modules/books/params.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ObjectGenerator.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -116,7 +111,7 @@
         <entry file="file://$PROJECT_DIR$/modules/books/book.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
-              <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
+              <caret line="18" column="106" selection-start-line="18" selection-start-column="106" selection-end-line="18" selection-end-column="106" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -127,8 +122,8 @@
       <file leaf-file-name="params.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/modules/books/params.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7094431" vertical-offset="322" max-vertical-offset="870">
-              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.20096852" vertical-offset="172" max-vertical-offset="870">
+              <caret line="17" column="49" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -156,7 +151,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/dutch_houses/util.py" />
         <option value="$PROJECT_DIR$/dutch_houses/house_params.py" />
         <option value="$PROJECT_DIR$/view.py" />
         <option value="$PROJECT_DIR$/skyline/building.py" />
@@ -206,6 +200,7 @@
         <option value="$PROJECT_DIR$/modules/books/__init__.py" />
         <option value="$PROJECT_DIR$/modules/books/bookshelf.py" />
         <option value="$PROJECT_DIR$/util/colorutil.py" />
+        <option value="$PROJECT_DIR$/modules/books/book.py" />
         <option value="$PROJECT_DIR$/modules/books/params.py" />
       </list>
     </option>
@@ -587,7 +582,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24947146" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32874617" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32568806" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32568806" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -948,16 +943,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/books/book.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
-          <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/skyline/roof.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="1185">
@@ -1034,10 +1019,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/modules/books/book.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
+          <caret line="18" column="106" selection-start-line="18" selection-start-column="106" selection-end-line="18" selection-end-column="106" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/modules/books/params.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7094431" vertical-offset="322" max-vertical-offset="870">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.20096852" vertical-offset="172" max-vertical-offset="870">
+          <caret line="17" column="49" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
