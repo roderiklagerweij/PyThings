@@ -25,11 +25,15 @@ class FileUploader:
         self.cf.store_object(self.container, filename, content)
         print ('Done')
 
+    def upload_folder(self, folder):
+        self.cf.upload_folder(folder, container=self.container)
+
 uploader = FileUploader()
 uploader.connect_container("PyThings")
 
 print ('Uploading files')
-for image in os.listdir('images'):
-    uploader.upload_file('images', image)
+uploader.upload_folder('images')
+# for image in os.listdir('images'):
+#     uploader.upload_file('images', image)
 
 
