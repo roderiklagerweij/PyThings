@@ -26,14 +26,6 @@ class Screen:
         self.childs.append(child)
 
     def draw(self, screen):
-        print (self.width, self.height)
-        # maxwidth = 0
-        # maxheight = 0
-
-        # for child in self.childs:
-        #     maxwidth = max(maxwidth, child.width)
-        #     maxheight = max(maxheight, child.height)
-
         surface = pygame.Surface((self.width, self.height), pygame.SRCALPHA, 32)
 
         for child in self.childs:
@@ -43,5 +35,9 @@ class Screen:
         screen.blit(surface, (0, 0))
 
     def get_export_rect(self):
-        return pygame.Rect(self.childs[0].offset_x, self.childs[0].offset_y,
-                    self.childs[0].width_with_padding, self.childs[0].height_with_padding)
+        x0 = max(0, self.childs[0].offset_x)
+        y0 = max(0, self.childs[0].offset_y)
+        x1 = min(self.width, self.childs[0].width_with_padding)
+        y1 = min(self.height, self.childs[0].height_with_padding)
+
+        return pygame.Rect(x0, y0, x1, y1)

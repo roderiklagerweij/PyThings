@@ -1,7 +1,4 @@
 from linearlayout import LinearLayout
-from modules import books
-from modules import skyline
-from modules import dutch_houses
 
 __author__ = 'Roderik'
 import pygame
@@ -11,6 +8,7 @@ from screen import Screen
 from argument_parser import ArgumentParser
 from exporter import export
 import settings
+import modules_config
 
 pygame.init()
 
@@ -21,16 +19,12 @@ view_hierarchy = []
 arg_parser = ArgumentParser()
 
 
-def recurse_add_prog(layout, parent):
-    for item in layout:
-        parent.add_child(item)
-
 new_instance = True
 
 export_mode = False
 export_counter = 0
 
-module = books
+module = modules_config.get_active_module()
 
 while not game_over:
     if new_instance:

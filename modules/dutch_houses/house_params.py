@@ -5,9 +5,14 @@ from pygame import Color
 
 class HouseParams:
 
-    house_color = random.choice([
-        Color(132, 31, 39)
-    ])
+    house_color = None
 
     def __init__(self):
         pass
+
+
+    @staticmethod
+    def init_params():
+        HouseParams.house_color = random.choice([
+            Color(132, 31, 39)
+        ])

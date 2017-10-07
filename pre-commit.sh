@@ -1,1 +1,2 @@
-python uploader.py
+python3 uploader.py
+python fileuploader.py
