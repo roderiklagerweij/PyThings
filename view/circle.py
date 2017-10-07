@@ -2,7 +2,7 @@ __author__ = 'Roderik'
 import pygame
 from pygame import Surface
 
-from view.linearlayout import LinearLayout
+from view.layout import LinearLayout
 
 
 class Circle(LinearLayout):

@@ -3,7 +3,7 @@ __author__ = 'Roderik'
 import pygame
 import pygame.locals
 
-from view.linearlayout import LinearLayout
+from view.layout import LinearLayout
 from template import write_template
 import settings
 from view.screen import Screen

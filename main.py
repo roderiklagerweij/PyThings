@@ -1,4 +1,4 @@
-from view.linearlayout import LinearLayout
+from view.layout import LinearLayout
 
 __author__ = 'Roderik'
 import pygame

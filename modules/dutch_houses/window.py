@@ -2,7 +2,7 @@ __author__ = 'Roderik'
 
 from pygame import Color
 
-from view.linearlayout import LinearLayout
+from view.layout import LinearLayout
 
 
 def get_instance():

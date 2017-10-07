@@ -1,7 +1,7 @@
 import random
 
 from modules.asian_neon.params import AsianNeonParams
-from view.linearlayout import LinearLayout
+from view.layout import LinearLayout
 from modules.asian_neon import text
 
 

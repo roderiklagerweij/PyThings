@@ -1,5 +1,5 @@
 from modules.books.params import BookParams
-from view.linearlayout import LinearLayout
+from view.layout import LinearLayout
 from view.textview import TextView
 
 __author__ = 'Roderik'

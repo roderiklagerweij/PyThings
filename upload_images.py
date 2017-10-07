@@ -13,7 +13,6 @@ class FileUploader:
         creds_file = os.path.expanduser("~/.rackspace_cloud_credentials")
         pyrax.set_credential_file(creds_file)
         self.cf = pyrax.cloudfiles
-        print (type(container))
         self.container = self.cf.get_container(container)
         print ('Successfully connected to container')
 
@@ -33,7 +32,3 @@ uploader.connect_container("PyThings")
 
 print ('Uploading files')
 uploader.upload_folder('images')
-# for image in os.listdir('images'):
-#     uploader.upload_file('images', image)
-
-

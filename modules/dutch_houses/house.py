@@ -1,5 +1,5 @@
 __author__ = 'Roderik'
-from view.linearlayout import LinearLayout
+from view.layout import LinearLayout
 from view.triangle import Triangle
 from modules.dutch_houses.house_params import HouseParams
 from modules.dutch_houses import window

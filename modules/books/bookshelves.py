@@ -1,4 +1,4 @@
-from view.linearlayout import LinearLayout
+from view.layout import LinearLayout
 from modules.books import bookshelf
 
 __author__ = 'Roderik'

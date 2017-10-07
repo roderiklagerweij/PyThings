@@ -2,7 +2,7 @@ from modules.skyline.params import SkylineParams
 
 __author__ = 'Roderik'
 
-from view.linearlayout import LinearLayout
+from view.layout import LinearLayout
 import random
 
 TOP_TOWER_SECTION = "top_tower_section"
