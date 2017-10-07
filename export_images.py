@@ -1,14 +1,13 @@
 __author__ = 'Roderik'
 
-from linearlayout import LinearLayout
-from template import write_template
-
 import pygame
 import pygame.locals
-import settings
-from screen import Screen
-from exporter import export
 
+from view.linearlayout import LinearLayout
+from template import write_template
+import settings
+from view.screen import Screen
+from exporter import export
 import modules_config
 
 

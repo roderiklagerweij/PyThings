@@ -1,5 +1,4 @@
-from linearlayout import LinearLayout
-from textview import TextView
+from view.linearlayout import LinearLayout
 
 __author__ = 'Roderik'
 

@@ -1,11 +1,11 @@
-from linearlayout import LinearLayout
+from view.linearlayout import LinearLayout
 
 __author__ = 'Roderik'
 import pygame
 import pygame.locals
 
-from screen import Screen
-from argument_parser import ArgumentParser
+from view.screen import Screen
+from util.argument_parser import ArgumentParser
 from exporter import export
 import settings
 import modules_config

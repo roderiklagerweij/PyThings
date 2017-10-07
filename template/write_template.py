@@ -10,7 +10,7 @@ def write_template(images):
 
     imgs = ''
     for image in images:
-        imgs += '<img src="' + image + '.png" style="padding: 10px;">'
+        imgs += '<img src="' + image + '.jpg" style="padding: 10px;">'
 
     template = template.replace('!images!', imgs)
     f.write(template)

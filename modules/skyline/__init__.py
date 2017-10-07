@@ -1,7 +1,7 @@
 # __author__ = 'Roderik'
 import random
 
-import constraint_applyer
+from util import constraint_applyer
 from modules.skyline.params import SkylineParams
 from modules.skyline import roof, tower_middlepart, two_tower, tower, tower_section
 from modules.skyline import two_tower

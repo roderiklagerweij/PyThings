@@ -1,5 +1,5 @@
 from modules.books import book
-from linearlayout import LinearLayout
+from view.linearlayout import LinearLayout
 
 __author__ = 'Roderik'
 

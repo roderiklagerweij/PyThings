@@ -2,8 +2,8 @@ __author__ = 'Roderik'
 
 import random
 
-from circle import Circle
-from linearlayout import LinearLayout
+from view.circle import Circle
+from view.linearlayout import LinearLayout
 from modules.skyline.params import SkylineParams
 
 

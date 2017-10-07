@@ -1,6 +1,8 @@
-from linearlayout import LinearLayout
 from pygame import Surface
 import pygame
+
+from view.linearlayout import LinearLayout
+
 
 class TextView(LinearLayout):
 

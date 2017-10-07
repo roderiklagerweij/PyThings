@@ -1,6 +1,6 @@
 __author__ = 'Roderik'
 
-from linearlayout import LinearLayout
+from view.linearlayout import LinearLayout
 from modules.skyline.params import SkylineParams
 from modules.skyline import tower_section
 from modules.skyline import roof, tower_middlepart

@@ -1,7 +1,9 @@
 __author__ = 'Roderik'
 import pygame
 from pygame import Surface
-from linearlayout import LinearLayout
+
+from view.linearlayout import LinearLayout
+
 
 class Triangle(LinearLayout):
 

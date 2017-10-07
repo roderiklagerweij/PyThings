@@ -1,6 +1,6 @@
-from linearlayout import LinearLayout
+from view.linearlayout import LinearLayout
 from modules.skyline.params import SkylineParams
-from triangle import Triangle
+from view.triangle import Triangle
 
 __author__ = 'Roderik'
 

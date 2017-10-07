@@ -1,5 +1,5 @@
 import settings
-import view_finder
+from util import view_finder
 
 __author__ = 'Roderik'
 

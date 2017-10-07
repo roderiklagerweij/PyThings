@@ -2,7 +2,7 @@ __author__ = 'Roderik'
 
 from modules.skyline import SkylineParams
 from modules.skyline import tower
-from linearlayout import LinearLayout
+from view.linearlayout import LinearLayout
 
 
 def get_instance():

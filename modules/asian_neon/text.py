@@ -1,9 +1,9 @@
-from linearlayout import LinearLayout
+from view.linearlayout import LinearLayout
 
 __author__ = 'Roderik'
 
 from modules.asian_neon.params import AsianNeonParams
-from textview import TextView
+from view.textview import TextView
 import random
 
 def get_instance():
