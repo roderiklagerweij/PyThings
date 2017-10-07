@@ -6,7 +6,6 @@ import pygame.locals
 
 from view.screen import Screen
 from util.argument_parser import ArgumentParser
-from exporter import export
 import settings
 import modules_config
 
@@ -20,9 +19,6 @@ arg_parser = ArgumentParser()
 
 
 new_instance = True
-
-export_mode = False
-export_counter = 0
 
 module = modules_config.get_active_module()
 
@@ -50,14 +46,6 @@ while not game_over:
 
         pygame.display.flip()
         new_instance = False
-
-        if export_mode:
-            export_rect = top_layout.get_export_rect()
-            export(screen.subsurface(export_rect), module, export_counter)
-            export_counter += 1
-            new_instance = True
-            if export_counter == 50:
-                game_over = True
 
     for event in pygame.event.get():
         if event.type == pygame.locals.QUIT:
