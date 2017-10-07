@@ -56,6 +56,5 @@ while not game_over:
                 game_over = True
             else:
                 new_instance = True
-                print (pressed_key)
 
     # pygame.time.delay(100)

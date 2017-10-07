@@ -14,68 +14,57 @@ class AsianNeonParams:
     sub_text = None
     sub_text_color = None
     sub_text_size = None
-    background_color = None
     border_color = None
+    border_width = 0
     board_predrawer = None
 
     @staticmethod
     def init_params():
 
-        AsianNeonParams.font = random.choice([
-            "JLR-Chinese-Love.ttf",
-            "ChineseWhisper.ttf",
-            "DFKTL1B.ttf",
-            "DFXSM1B.ttf",
-            "GB5FS1B.ttf",
-            "GoJuOn.ttf",
-        ])
+        font_selection = random.choice([0, 1])
+        if font_selection == 0:
+            AsianNeonParams.font = "DFKTL1B.ttf"
+            AsianNeonParams.text_size = random.choice([24, 36, 48])
+        else:
+            AsianNeonParams.font = "GoJuOn.ttf"
+            AsianNeonParams.text_size = random.choice([36, 48, 60])
+
+
+        AsianNeonParams.sub_text_size = int(AsianNeonParams.text_size * (random.random()*0.5 + 0.5))
+
+        valid_characters = [x for x in string.ascii_lowercase]
+        valid_characters.remove('y')
 
         AsianNeonParams.text = ''
         AsianNeonParams.sub_text = ''
 
         for i in range(random.randint(1, 9)):
-            AsianNeonParams.text += random.choice(string.ascii_letters)
+            AsianNeonParams.text += random.choice(valid_characters)
 
         for i in range(random.randint(1, len(AsianNeonParams.text))):
-            AsianNeonParams.sub_text += random.choice(string.ascii_letters)
+            AsianNeonParams.sub_text += random.choice(valid_characters)
 
-        text_colors = [
-            (244, 220, 138),
-            (225, 210, 220),
-            (235, 175, 128),
-            (121, 198, 227),
-            (56, 154, 98),
-            (250, 107, 82),
-            (246, 217, 21)
+        AsianNeonParams.border_width = random.choice([
+            2, 4, 6
+        ])
+
+
+        applicable_colors = [
+            (250, 255, 234),
+            (249, 105, 4),
+            (255, 243, 29),
+            (187, 255, 138)
         ]
-        AsianNeonParams.text_color = random.choice(text_colors)
-        AsianNeonParams.sub_text_color = random.choice(text_colors)
 
-        AsianNeonParams.text_size = random.choice([
-            16, 24, 36, 48
-        ])
-        AsianNeonParams.sub_text_size = int(AsianNeonParams.text_size * (random.random()*0.5 + 0.5))
+        AsianNeonParams.text_color = random.choice(applicable_colors)
+        AsianNeonParams.sub_text_color = random.choice(applicable_colors)
 
-
-        AsianNeonParams.background_color = random.choice([
-            (8, 196, 22),
-            (29, 32, 34),
-            (219, 31, 49),
-            (1, 0, 191),
-            (10, 38, 83),
-            (207, 225, 251)
-        ])
-
-        AsianNeonParams.border_color = random.choice([
-            (255, 0, 0),
-            (252, 235, 108),
-            (255, 255, 0)
-        ])
+        AsianNeonParams.border_color = random.choice(applicable_colors)
 
         if random.random() < 0.2:
             if random.choice([True, False]):
-                AsianNeonParams.board_predrawer = HorizontalStripesDrawer(2, 15, (255, 0, 0))
+                AsianNeonParams.board_predrawer = HorizontalStripesDrawer(2, 15, AsianNeonParams.border_color)
             else:
-                AsianNeonParams.board_predrawer = VerticalStripesDrawer(2, 15, (255, 0, 0))
+                AsianNeonParams.board_predrawer = VerticalStripesDrawer(2, 15, AsianNeonParams.border_color)
         else:
             AsianNeonParams.board_predrawer = None

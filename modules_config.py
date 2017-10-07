@@ -8,4 +8,4 @@ def get_modules():
     return [asian_neon, books, skyline, dutch_houses]
 
 def get_active_module():
-    return books
+    return asian_neon
