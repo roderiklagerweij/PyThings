@@ -20,11 +20,6 @@ game_over = False
 view_hierarchy = []
 arg_parser = ArgumentParser()
 
-# * all linearlayouts are wrap content now
-# * view must take a dedicated space
-# gravity?
-# layout_weight?
-# constraints
 
 def recurse_add_prog(layout, parent):
     for item in layout:
