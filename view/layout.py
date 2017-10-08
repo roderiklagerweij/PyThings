@@ -146,9 +146,12 @@ class LinearLayout:
         if self.fill_width:
             self.width = available_fill_width - (self.padding_left + self.padding_right)
             self.width_with_padding = available_fill_width
+            self.actual_width_with_padding = available_fill_width
+
         if self.fill_height:
             self.height = available_fill_height - (self.padding_top + self.padding_bottom)
             self.height_with_padding = available_fill_height
+            self.actual_height_with_padding = available_fill_height
 
         width_weight_sum = 0
         height_weight_sum = 0

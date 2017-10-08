@@ -8,13 +8,16 @@ class HouseParams:
     window_color = None
     frame_color = None
     floor_layout = None
+    nr_floors = 0
     window_layout = None
+    top_decoration = None
 
     def __init__(self):
         pass
 
     @staticmethod
     def init_params():
+        HouseParams.nr_floors = random.randint(2, 3)
 
         HouseParams.house_color = random.choice([
             (26, 26, 22),
@@ -47,6 +50,12 @@ class HouseParams:
             WindowLayout.window_layout_2_2,
             WindowLayout.window_layout_2])
 
+        HouseParams.top_decoration = random.choice([
+            WindowTopDecoration.top_decoration_none,
+            WindowTopDecoration.top_decoration_3,
+            WindowTopDecoration.top_decoration_5
+        ])
+
 class FloorLayout:
     layout2windows = 0
     layout3windows = 1
@@ -56,3 +65,8 @@ class WindowLayout:
     window_layout_1_2 = 1
     window_layout_2_2 = 2
     window_layout_2 = 3
+
+class WindowTopDecoration:
+    top_decoration_none = 0
+    top_decoration_3 = 1
+    top_decoration_5 = 2
