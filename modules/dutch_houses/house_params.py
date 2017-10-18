@@ -10,7 +10,8 @@ class HouseParams:
     floor_layout = None
     nr_floors = 0
     window_layout = None
-    top_decoration = None
+    window_top_decoration = None
+    window_side_decoration = None
 
     def __init__(self):
         pass
@@ -50,10 +51,16 @@ class HouseParams:
             WindowLayout.window_layout_2_2,
             WindowLayout.window_layout_2])
 
-        HouseParams.top_decoration = random.choice([
+        HouseParams.window_top_decoration = random.choice([
             WindowTopDecoration.top_decoration_none,
             WindowTopDecoration.top_decoration_3,
             WindowTopDecoration.top_decoration_5
+        ])
+
+        HouseParams.window_side_decoration = random.choice([
+            WindowSideDecoration.side_decoration_none,
+            WindowSideDecoration.side_decoration_hatch_classic,
+            WindowSideDecoration.side_decoration_hatch_regular
         ])
 
 class FloorLayout:
@@ -70,3 +77,8 @@ class WindowTopDecoration:
     top_decoration_none = 0
     top_decoration_3 = 1
     top_decoration_5 = 2
+
+class WindowSideDecoration:
+    side_decoration_none = 0
+    side_decoration_hatch_classic = 1
+    side_decoration_hatch_regular = 2

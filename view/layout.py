@@ -97,6 +97,8 @@ class LinearLayout:
 
         width = 0
         height = 0
+        if self.debug_id:
+            print ('1', self.actual_width_with_padding)
 
         for child in self.childs:
             child.measure()
@@ -121,7 +123,8 @@ class LinearLayout:
         # add padding
         self.width_with_padding = self.width + self.padding_left + self.padding_right
         self.height_with_padding = self.height + self.padding_top + self.padding_bottom
-
+        if self.debug_id:
+            print ('2', self.width_with_padding)
         # adjust width/height to rotation
         topLeft = self.rotatePoint(self.rotation, (0, self.height_with_padding), (0, 0))
         topRight = self.rotatePoint(self.rotation, (self.width_with_padding, self.height_with_padding), (0, 0))
@@ -136,12 +139,14 @@ class LinearLayout:
         self.actual_height_with_padding = abs(mostTop - mostBottom)
 
         if self.debug_id:
-            print ('measure for', self.debug_id + ':\n\twidth:', self.width, '\n\twidth with padding:', self.width_with_padding, '\n\theight:',self.height, '\n\theight with padding:',self.height_with_padding)
+            print ('measure for', self.debug_id + ':\n\tactual width with padding:', self.actual_width_with_padding, '\n\tactual height with padding:',self.actual_height_with_padding)
 
     #
     def post_measure(self, available_fill_width, available_fill_height):
         if not self.visible:
             return
+        if self.debug_id:
+            print ('available fill width:', available_fill_width)
 
         if self.fill_width:
             self.width = available_fill_width - (self.padding_left + self.padding_right)
@@ -152,6 +157,8 @@ class LinearLayout:
             self.height = available_fill_height - (self.padding_top + self.padding_bottom)
             self.height_with_padding = available_fill_height
             self.actual_height_with_padding = available_fill_height
+
+
 
         width_weight_sum = 0
         height_weight_sum = 0
@@ -168,7 +175,6 @@ class LinearLayout:
 
             # if self.debug_id:
             #     print (self.debug_id, 'Post measure:', available_fill_width, self.width, used_width, self.fill_width, float(self.width - used_width) / float(width_weight_sum))
-
             for child in self.childs:
                 child.post_measure(
                     float(self.width - used_width) / float(width_weight_sum),
@@ -198,12 +204,15 @@ class LinearLayout:
             for child in self.childs:
                 child.post_measure(self.width, self.height)
 
+        if self.debug_id:
+            print ('***', self.actual_width_with_padding)
+
     def layout(self, offset_x, offset_y, available_width, available_height):
         if not self.visible:
             return
 
-        if self.debug_id:
-            print ('layout****', self.debug_id, offset_x, offset_y, available_width, available_height, self.width, self.height)
+        # if self.debug_id:
+        #     print ('layout****', self.debug_id, offset_x, offset_y, available_width, available_height, self.width, self.height)
 
         self.offset_x = offset_x
         self.offset_y = offset_y
@@ -226,8 +235,8 @@ class LinearLayout:
         draw_y = self.padding_top
 
         for child in self.childs:
-            if self.debug_id:
-                print (self.debug_id, child.debug_id, draw_x)
+            # if self.debug_id:
+            #     print (self.debug_id, child.debug_id, draw_x)
 
             child.layout(draw_x, draw_y, self.width, self.height)
 
@@ -245,8 +254,8 @@ class LinearLayout:
         if not self.visible:
             surface
 
-        if self.debug_id:
-            print ('draw', self.debug_id, self.offset_x, self.width, self.width_with_padding)
+        # if self.debug_id:
+        #     print ('draw', self.debug_id, self.offset_x, self.width, self.width_with_padding)
 
         if self.color:
             pygame.draw.rect(surface, self.color, (

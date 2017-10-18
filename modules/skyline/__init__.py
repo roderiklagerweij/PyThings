@@ -18,7 +18,7 @@ def get_instance():
     ])
 
     # apply constraints
-    constraint_applyer.apply_constraint(instance, [
+    constraint_applyer.apply_width_constraint(instance, [
         roof.TOWER_ROOF,
         tower_section.TOP_TOWER_SECTION,
         tower_middlepart.TOWER_MIDDLE_PART
