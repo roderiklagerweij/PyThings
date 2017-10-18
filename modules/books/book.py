@@ -12,9 +12,13 @@ def get_instance():
         gravity="bottom",
         childs=[
             LinearLayout(
-                color=BookParams.color,
-                padding=BookParams.padding,
                 rotation=270 + BookParams.angle,
                 childs=[
-                    TextView(BookParams.text, BookParams.title_color, "DFKTL1B.ttf", BookParams.title_size)])
+                    LinearLayout(
+                        padding=BookParams.padding,
+                        color=BookParams.color,
+                        childs=[
+                            TextView(BookParams.text, BookParams.title_color, "DFKTL1B.ttf", BookParams.title_size)])
+                ]
+            )
         ])

@@ -35,7 +35,7 @@ for module in modules_config.get_modules():
             view.post_measure(settings.SCREEN_WIDTH, settings.SCREEN_HEIGHT)
 
         for view in view_hierarchy:
-            view.layout(0, 0, settings.SCREEN_WIDTH, settings.SCREEN_HEIGHT)
+            view.apply_gravity(0, 0, settings.SCREEN_WIDTH, settings.SCREEN_HEIGHT)
 
         for view in view_hierarchy:
             view.draw(screen)

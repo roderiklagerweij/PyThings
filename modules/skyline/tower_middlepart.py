@@ -18,6 +18,7 @@ def get_instance():
             color=SkylineParams.wall_color,
             id=TOWER_MIDDLE_PART,
             intensity=SkylineParams.intensity,
+            debug_id="section_divider",
             gravity="center_horizontal",
             padding=5,
             childs=[
