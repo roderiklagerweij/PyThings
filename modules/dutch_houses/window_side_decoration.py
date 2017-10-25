@@ -12,14 +12,19 @@ def get_instance():
         return LinearLayout(width=0, height=0)
     elif HouseParams.window_side_decoration == WindowSideDecoration.side_decoration_hatch_regular or True:
         return LinearLayout(
-            layout_type="VERTICAL",
             id=WINDOW_SIDE_HATCH,
             padding=4,
-            color=(255, 0, 0),
+            color=(37, 37, 37),
             gravity="bottom",
             childs=[
-                Triangle(fill_height=True, width=20, color=(0, 255, 0), rotation=180),
-                Triangle(fill_height=True, width=20, color=(0, 255, 0))
+                LinearLayout(
+                    layout_type="VERTICAL",
+                    fill_height=True,
+                    color=HouseParams.classic_window_side_decoration_background_color,
+                    childs=[
+                        Triangle(fill_height=True, width=10, rotation=180, color=HouseParams.classic_window_side_decoration_triangle_color),
+                        Triangle(fill_height=True, width=10, color=HouseParams.classic_window_side_decoration_triangle_color)
+                    ]
+                )
             ]
-
         )

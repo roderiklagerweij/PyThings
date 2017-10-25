@@ -12,6 +12,8 @@ class HouseParams:
     window_layout = None
     window_top_decoration = None
     window_side_decoration = None
+    classic_window_side_decoration_background_color = None
+    classic_window_side_decoration_triangle_color = None
 
     def __init__(self):
         pass
@@ -62,6 +64,13 @@ class HouseParams:
             WindowSideDecoration.side_decoration_hatch_classic,
             WindowSideDecoration.side_decoration_hatch_regular
         ])
+
+        if random.choice([True, False]):
+            HouseParams.classic_window_side_decoration_background_color = (255, 255, 255)
+            HouseParams.classic_window_side_decoration_triangle_color = (255, 0, 0)
+        else:
+            HouseParams.classic_window_side_decoration_background_color = (0, 0, 0)
+            HouseParams.classic_window_side_decoration_triangle_color = (255, 255, 255)
 
 class FloorLayout:
     layout2windows = 0

@@ -14,30 +14,31 @@ def get_instance():
         return LinearLayout(
             layout_type="HORIZONTAL",
             id=WINDOW_TOP_DECORATION,
+            debug_id='container',
             fill_width=True,
             childs=[
-                LinearLayout(height=8, color=HouseParams.frame_color, fill_width=True, rotation=0),
+                LinearLayout(height=8, width=4, color=HouseParams.frame_color, rotation=10, debug_id='test'),
                 LinearLayout(height=8, fill_width=True),
-                LinearLayout(height=8, color=HouseParams.frame_color, fill_width=True),
+                LinearLayout(height=8, width=4, color=HouseParams.frame_color),
                 LinearLayout(height=8, fill_width=True),
-                LinearLayout(height=8, color=HouseParams.frame_color, fill_width=True, rotation=0),
+                LinearLayout(height=8, width=4, color=HouseParams.frame_color, rotation=-10),
                 ]
         )
     elif HouseParams.window_top_decoration == WindowTopDecoration.top_decoration_5:
         return LinearLayout(
             layout_type="HORIZONTAL",
-            debug_id='top decoration',
+            debug_id='container',
             id=WINDOW_TOP_DECORATION,
             fill_width=True,
             childs=[
-                LinearLayout(height=8, color=HouseParams.frame_color, fill_width=True, rotation=0),
+                LinearLayout(height=8, width=4, color=HouseParams.frame_color, rotation=20),
                 LinearLayout(height=8, fill_width=True),
-                LinearLayout(height=8, color=HouseParams.frame_color, fill_width=True, rotation=0),
+                LinearLayout(height=8, width=4, color=HouseParams.frame_color, rotation=10),
                 LinearLayout(height=8, fill_width=True),
-                LinearLayout(height=8, color=HouseParams.frame_color, fill_width=True),
+                LinearLayout(height=8, width=4, color=HouseParams.frame_color),
                 LinearLayout(height=8, fill_width=True),
-                LinearLayout(height=8, color=HouseParams.frame_color, fill_width=True, rotation=0),
+                LinearLayout(height=8, width=4, color=HouseParams.frame_color, rotation=-10),
                 LinearLayout(height=8, fill_width=True),
-                LinearLayout(height=8, color=HouseParams.frame_color, fill_width=True, rotation=0)
+                LinearLayout(height=8, width=4, color=HouseParams.frame_color, rotation=-20)
             ]
         )

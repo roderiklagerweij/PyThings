@@ -64,8 +64,12 @@ class LinearLayout:
         self.fill_height = fill_height
         self.width = width
         self.height = height
+        # dimensions before rotation are needed to create the surface when drawing
         self.width_before_rotation = 0
         self.height_before_rotation = 0
+        # have the ability to override the measured dimensions (e.g., when applying constraints)
+        # self.override_width = 0
+        # self.override_height = 0
         self.rotation = rotation
         self.predrawer = predrawer
         self.postdrawer = postdrawer
@@ -96,13 +100,20 @@ class LinearLayout:
             if self.padding_top > 0 or self.padding_bottom > 0:
                 raise ValueError("Setting both padding and specific height is weird")
 
-        if not self.rotation == 0:
-            if self.padding_bottom > 0 or self.padding_left > 0 or self.padding_right > 0 or self.padding_top > 0:
-                raise ValueError("Setting rotation and padding is weird")
+        # if not self.rotation == 0 and not self.rotation == 180:
+        #     if self.padding_bottom > 0 or self.padding_left > 0 or self.padding_right > 0 or self.padding_top > 0:
+        #         raise ValueError("Setting rotation and padding is weird")
+        #
+        #     if self.fill_height or self.fill_width:
+        #         raise ValueError("Using rotation and fill width or height is not supported")
 
     # calculate own width and height
     def measure(self):
         if not self.visible:
+            return
+
+        # this is a hack
+        if not self.width_before_rotation == 0 and not self.height_before_rotation == 0 and not self.rotation == 0:
             return
 
         measured_childs_width = 0
@@ -144,7 +155,7 @@ class LinearLayout:
         self.width = abs(mostRight - mostLeft)
         self.height = abs(mostTop - mostBottom)
 
-    #
+
     def post_measure(self, available_fill_width, available_fill_height):
         if not self.visible:
             return
@@ -232,6 +243,7 @@ class LinearLayout:
         self.childs.append(child)
 
     def draw(self):
+        # print (self.width_before_rotation, self.height_before_rotation)
         surface = pygame.Surface((self.width_before_rotation, self.height_before_rotation), pygame.SRCALPHA, 32)
 
         if not self.visible:
