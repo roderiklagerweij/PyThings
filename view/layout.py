@@ -1,6 +1,5 @@
 __author__ = 'Roderik'
 import pygame
-from pygame import Color
 import colorsys
 from math import *
 
@@ -67,9 +66,6 @@ class LinearLayout:
         # dimensions before rotation are needed to create the surface when drawing
         self.width_before_rotation = 0
         self.height_before_rotation = 0
-        # have the ability to override the measured dimensions (e.g., when applying constraints)
-        # self.override_width = 0
-        # self.override_height = 0
         self.rotation = rotation
         self.predrawer = predrawer
         self.postdrawer = postdrawer
@@ -99,13 +95,6 @@ class LinearLayout:
         if self.height > 0:
             if self.padding_top > 0 or self.padding_bottom > 0:
                 raise ValueError("Setting both padding and specific height is weird")
-
-        # if not self.rotation == 0 and not self.rotation == 180:
-        #     if self.padding_bottom > 0 or self.padding_left > 0 or self.padding_right > 0 or self.padding_top > 0:
-        #         raise ValueError("Setting rotation and padding is weird")
-        #
-        #     if self.fill_height or self.fill_width:
-        #         raise ValueError("Using rotation and fill width or height is not supported")
 
     # calculate own width and height
     def measure(self):
